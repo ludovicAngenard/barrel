@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637453623027318135
+      ticks: 637454430427914496
     m_Hash: 3120153056
   m_LockFileStatus:
     m_FilePath: C:/GitHub/Projet Barrel/Barrel/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637453624000998394
+      ticks: 637454430892089936
     m_Hash: 1878463414
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
