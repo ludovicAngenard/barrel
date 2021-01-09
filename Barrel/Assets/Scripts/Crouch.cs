@@ -9,16 +9,16 @@ public class Crouch : MonoBehaviour
 
     private bool m_Crouch = false;
 
-    public KeyCode crouchKey = Keycode.C;
+    public KeyCode crouchKey = KeyCode.LeftControl;
 
     private float m_OriginalHeight;
 
-[SerializeField]
+    [SerializeField] private float m_CrouchHeight = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
         m_CharacterController = GetComponent<CharacterController>();
-        m_originalHeight = m_CharacterController.height;
+        m_OriginalHeight = m_CharacterController.height;
     }
 
     // Update is called once per frame
@@ -26,17 +26,29 @@ public class Crouch : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.LeftControl))
             {
-                print("Crouch");
+                m_Crouch = !m_Crouch;
+
+                CheckCrouch();
+            }
+        if(Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                m_Crouch = !m_Crouch;
+
+                CheckCrouch();
             }
     }
 
-    void Crouch()
+    void CheckCrouch()
     {
-        playerCol.height = reducedHeight;
+        if(m_Crouch == true)
+        {
+            m_CharacterController.height = m_CrouchHeight;
+        }
+        else
+        {
+            m_CharacterController.height = m_OriginalHeight;
+        }
     }
 
-    void GoUp()
-    {
-        playerCol.height = originalHeight;
-    }
+
 }
