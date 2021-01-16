@@ -257,7 +257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157691538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57.11, y: 0.918, z: 2.3839}
+  m_LocalPosition: {x: -70.95, y: 0.918, z: 2.3839}
   m_LocalScale: {x: 8.236546, y: 0.9171612, z: 3.4802363}
   m_Children: []
   m_Father: {fileID: 0}
@@ -790,6 +790,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_WalkSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: playerNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_FootstepSounds.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -926,6 +934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b73c060c255d1a43a9fcdf0bf41e841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1186180678}
   crouchKey: 306
   m_CrouchHeight: 0.5
 --- !u!136 &1186180686
@@ -1129,7 +1138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b73c060c255d1a43a9fcdf0bf41e841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crouchKey: 306
+  player: {fileID: 1702692687}
+  crouchKey: 112
   m_CrouchHeight: 0.5
 --- !u!136 &1702692689
 CapsuleCollider:
@@ -1525,6 +1535,18 @@ PrefabInstance:
     - target: {fileID: 8200000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_WalkSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: playerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_FovKick.Camera
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_FootstepSounds.Array.size

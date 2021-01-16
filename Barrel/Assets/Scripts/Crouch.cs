@@ -5,6 +5,8 @@ using UnityEngine;
 public class Crouch : MonoBehaviour
 {
 
+    public GameObject player;
+
     private CharacterController m_CharacterController;
 
     private bool m_Crouch = false;
@@ -17,25 +19,51 @@ public class Crouch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_CharacterController = GetComponent<CharacterController>();
+        m_CharacterController = player.GetComponent<CharacterController>();
         m_OriginalHeight = m_CharacterController.height;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftControl))
+
+        if(player.name == "FPSController")
+        {
+
+            if(Input.GetKeyDown(KeyCode.LeftControl))
             {
                 m_Crouch = !m_Crouch;
 
                 CheckCrouch();
             }
-        if(Input.GetKeyUp(KeyCode.LeftControl))
+
+    
+            if(Input.GetKeyUp(KeyCode.LeftControl))
             {
                 m_Crouch = !m_Crouch;
 
                 CheckCrouch();
             }
+        }
+
+        if(player.name == "FPSController (1)")
+        {
+
+            if(Input.GetKeyDown(KeyCode.RightControl))
+            {
+                m_Crouch = !m_Crouch;
+
+                CheckCrouch();
+            }
+
+    
+            if(Input.GetKeyUp(KeyCode.RightControl))
+            {
+                m_Crouch = !m_Crouch;
+
+                CheckCrouch();
+            }
+        }
     }
 
     void CheckCrouch()
