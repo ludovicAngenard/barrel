@@ -29,7 +29,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_CharacterTargetRot = character.localRotation;
             m_CameraTargetRot = camera.localRotation;
 
-            m_FirstPersonController.GetComponent<FirstPersonController>() ;
+         //   m_FirstPersonController.GetComponent<FirstPersonController>() ;
         }
 
 
