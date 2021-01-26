@@ -33,12 +33,53 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        public void LookRotation(Transform character, Transform camera)
+      /*  public void LookRotation(Transform character, Transform camera)
         {
             
 
             float yRot = CrossPlatformInputManager.GetAxis("Player"+m_FirstPersonController.playerNumber+"Mouse X") * XSensitivity;
             float xRot = CrossPlatformInputManager.GetAxis("Player"+m_FirstPersonController.playerNumber+"Mouse Y") * YSensitivity;
+
+            m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
+            m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
+
+            if(clampVerticalRotation)
+                m_CameraTargetRot = ClampRotationAroundXAxis (m_CameraTargetRot);
+
+            if(smooth)
+            {
+                character.localRotation = Quaternion.Slerp (character.localRotation, m_CharacterTargetRot,
+                    smoothTime * Time.deltaTime);
+                camera.localRotation = Quaternion.Slerp (camera.localRotation, m_CameraTargetRot,
+                    smoothTime * Time.deltaTime);
+            }
+            else
+            {
+                character.localRotation = m_CharacterTargetRot;
+                camera.localRotation = m_CameraTargetRot;
+            }
+
+            UpdateCursorLock();
+        }
+*/
+
+        public void LookRotation(Transform character, Transform camera, int playerNumber)
+        {
+            String MX;
+            String MY;
+
+            if(playerNumber != 2){
+                MX = "Mouse X";
+                MY = "Mouse Y";
+            }
+            else
+            {
+                MX = "Mouse X2";
+                MY = "Mouse Y2";
+            }
+
+        float yRot = CrossPlatformInputManager.GetAxis(MX) * XSensitivity;
+            float xRot = CrossPlatformInputManager.GetAxis(MY) * YSensitivity;
 
             m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
             m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);

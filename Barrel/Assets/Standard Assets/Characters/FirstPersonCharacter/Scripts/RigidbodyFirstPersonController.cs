@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityStandardAssets.Characters.FirstPerson;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -81,6 +82,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public MovementSettings movementSettings = new MovementSettings();
         public MouseLook mouseLook = new MouseLook();
         public AdvancedSettings advancedSettings = new AdvancedSettings();
+        private FirstPersonController m_FirstPersonController;
 
 
         private Rigidbody m_RigidBody;
@@ -123,6 +125,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init (transform, cam.transform);
+            m_FirstPersonController.GetComponent<FirstPersonController>() ;
+
         }
 
 
@@ -230,7 +234,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // get the rotation before it's changed
             float oldYRotation = transform.eulerAngles.y;
 
-            mouseLook.LookRotation (transform, cam.transform);
+            mouseLook.LookRotation (transform, cam.transform, m_FirstPersonController.playerNumber);
 
             if (m_IsGrounded || advancedSettings.airControl)
             {
