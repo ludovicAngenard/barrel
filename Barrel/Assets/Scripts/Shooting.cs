@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Shooting : MonoBehaviour
 {
@@ -11,107 +12,87 @@ public class Shooting : MonoBehaviour
     public int Ammo;
     public GameObject player;
     private CharacterController m_CharacterController;
-    public float reloadtime = 4.0f;
-    public float shoottime = 1.0f;
+    public float reloadtime;
+    public float shoottime;
+    private FirstPersonController firstPersonController;
 
 
     // Use this for initialization
     void Start()
     {
     m_CharacterController = player.GetComponent<CharacterController>();
-  
-        Ammo = 4;
+    firstPersonController = player.GetComponent<FirstPersonController>();
+    Ammo = 4;
+    shoottime = 0.0f;
+    reloadtime = 0.0f;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateShootTime();
+        UpdateReloadTime();
 
-        
-        if(player.name == "FPSController")
+        if(player.name == "FPSController"+firstPersonController.playerNumber)
         {
-            
-            if(Input.GetButtonDown("Shoot"))
+
+            if(Input.GetButtonDown("Shoot"+firstPersonController.playerNumber))
             {
                 CheckBullet();
             }
-            
-            if(Input.GetButtonDown("Reload") && reloadtime <= 0)
+
+            if(Input.GetButtonDown("Reload"+firstPersonController.playerNumber) && reloadtime <= 0)
             {
                 Reload();
             }
 
         }
 
-        if(player.name == "FPSController (1)")
+    }
+    void UpdateShootTime(){
+        if ( shoottime > 0.0f)
         {
-
-            if(Input.GetButtonDown("Shoot2"))
-            {
-                CheckBullet();
-            }
-
-            if(Input.GetButtonDown("Reload2") && reloadtime <= 0)
-            {
-                Reload();
-            }
+            shoottime -= Time.deltaTime;
         }
-
-        
+    }
+    void UpdateReloadTime(){
+         if ( reloadtime > 0.0f)
+        {
+            reloadtime -= Time.deltaTime;
+        }
     }
 
-void countdown(float timeleft)
+    void CheckBullet()
+    {
+        if(Ammo > 0 && shoottime <= 0 && reloadtime <= 0)
         {
-            timeleft -= Time.deltaTime;
-            timer(timeleft);
-        }
-
-
-        float timer(float timeleft)
-        {
-            if(timeleft <= 0)
-            {
-               countdown(timeleft); 
-            }
-            return timeleft;
-        }
-
-        void CheckBullet()
-        {
-            if(Ammo > 0 && timer(shoottime) <= 0)
-            {
             Shoot();
             Ammo = Ammo - 1;
+            shoottime = 1.0f;
 
-                if(Ammo == 0) 
-                {
-                    Reload();
-                
-                }
+            if(Ammo == 0)
+            {
+                Reload();
 
-            }   
+            }
+
         }
+    }
 
-        void Shoot()
-        {
+    void Shoot()
+    {
 
-                ShootBullet();    
-                shoottime = 1;
-               
-        }
+        ShootBullet();
+        shoottime = 1;
 
-                    void Reload()
-                    {
-                        reloadtime -= Time.deltaTime;
-                            if (reloadtime <= 0)
-                        {
-                        Ammo = 4;
-                        reloadtime = 4;
-                        }
-                        
-                    }
+    }
+
+    void Reload()
+    {
+        Ammo = 4;
+        reloadtime = 4;
+    }
 
     private void ShootBullet()
     {
