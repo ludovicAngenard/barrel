@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Crouch : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Crouch : MonoBehaviour
     private bool m_Crouch = false;
 
     public KeyCode crouchKey = KeyCode.LeftControl;
+    private FirstPersonController firstPersonController;
 
     private float m_OriginalHeight;
 
@@ -21,24 +23,24 @@ public class Crouch : MonoBehaviour
     {
         m_CharacterController = player.GetComponent<CharacterController>();
         m_OriginalHeight = m_CharacterController.height;
+        firstPersonController = player.GetComponent<FirstPersonController>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if(player.name == "FPSController")
+        if(player.name == "FPSController"+firstPersonController.playerNumber)
         {
 
-            if(Input.GetKeyDown(KeyCode.LeftControl))
+            if(Input.GetButtonDown("crouch"+firstPersonController.playerNumber))
             {
                 m_Crouch = !m_Crouch;
 
                 CheckCrouch();
             }
-
-    
-            if(Input.GetKeyUp(KeyCode.LeftControl))
+            
+            if(Input.GetButtonUp("crouch"+firstPersonController.playerNumber))
             {
                 m_Crouch = !m_Crouch;
 
@@ -46,24 +48,6 @@ public class Crouch : MonoBehaviour
             }
         }
 
-        if(player.name == "FPSController (1)")
-        {
-
-            if(Input.GetKeyDown(KeyCode.RightControl))
-            {
-                m_Crouch = !m_Crouch;
-
-                CheckCrouch();
-            }
-
-    
-            if(Input.GetKeyUp(KeyCode.RightControl))
-            {
-                m_Crouch = !m_Crouch;
-
-                CheckCrouch();
-            }
-        }
     }
 
     void CheckCrouch()
