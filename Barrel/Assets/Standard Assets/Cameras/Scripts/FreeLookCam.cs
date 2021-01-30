@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityStandardAssets.Characters.FirstPerson;
 
 namespace UnityStandardAssets.Cameras
 {
@@ -28,6 +29,10 @@ namespace UnityStandardAssets.Cameras
 		private Quaternion m_PivotTargetRot;
 		private Quaternion m_TransformTargetRot;
 
+        private FirstPersonController m_FirstPersonController;
+
+        
+
         protected override void Awake()
         {
             base.Awake();
@@ -38,6 +43,8 @@ namespace UnityStandardAssets.Cameras
 
 	        m_PivotTargetRot = m_Pivot.transform.localRotation;
 			m_TransformTargetRot = transform.localRotation;
+
+            m_FirstPersonController.GetComponent<FirstPersonController>() ;
         }
 
 
@@ -69,12 +76,14 @@ namespace UnityStandardAssets.Cameras
 
         private void HandleRotationMovement()
         {
+
+
 			if(Time.timeScale < float.Epsilon)
 			return;
 
             // Read the user input
-            var x = CrossPlatformInputManager.GetAxis("Mouse X");
-            var y = CrossPlatformInputManager.GetAxis("Mouse Y");
+            var x = CrossPlatformInputManager.GetAxis("Player"+m_FirstPersonController.playerNumber+"Mouse X");
+            var y = CrossPlatformInputManager.GetAxis("Player"+m_FirstPersonController.playerNumber+"Mouse Y");
 
             // Adjust the look angle by an amount proportional to the turn speed and horizontal input.
             m_LookAngle += x*m_TurnSpeed;

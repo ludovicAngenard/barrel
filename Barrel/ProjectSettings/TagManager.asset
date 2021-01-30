@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - camera1
+  - camera2
+  - camera3
   layers:
   - Default
   - TransparentFX
