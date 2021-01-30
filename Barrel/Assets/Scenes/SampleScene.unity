@@ -151,6 +151,10 @@ MonoBehaviour:
   spawnPoint: {fileID: 726918887}
   bullet: {fileID: 4421061995859817000, guid: e89c3cff28483b649a56cfa566ac06f5, type: 3}
   bulletSpeed: 15
+  Ammo: 0
+  player: {fileID: 1702692687}
+  reloadtime: 4
+  shoottime: 0
 --- !u!1 &157691538
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +507,10 @@ MonoBehaviour:
   spawnPoint: {fileID: 1324461430}
   bullet: {fileID: 4421061995859817000, guid: e89c3cff28483b649a56cfa566ac06f5, type: 3}
   bulletSpeed: 15
+  Ammo: 0
+  player: {fileID: 1186180678}
+  reloadtime: 4
+  shoottime: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,7 +727,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_Name
-      value: FPSController (1)
+      value: FPSController2
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_TagString
@@ -1486,7 +1494,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_Name
-      value: FPSController
+      value: FPSController1
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_TagString
