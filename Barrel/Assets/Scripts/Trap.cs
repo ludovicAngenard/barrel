@@ -8,8 +8,6 @@ using System.Timers;
 
 public class Trap : MonoBehaviour
 {
-    public float timeRemaining = 10;
-    public bool timerIsRunning = false;
     private CharacterController m_CharacterController;
     private FirstPersonController firstPersonController;
     public GameObject player;
@@ -30,29 +28,6 @@ public class Trap : MonoBehaviour
     void Update()
     {
 
-        /*if (timerIsRunning)
-        {
-            Debug.Log(timerIsRunning);
-            if (timeRemaining > 0)
-            {
-
-                Debug.Log("ok");
-                timeRemaining -= Time.deltaTime;
-               
-            }
-            else
-            {
-                firstPersonController = GameObject.FindObjectOfType<FirstPersonController>();
-
-                Debug.Log("Time has run out!");
-                timeRemaining = 0;
-                timerIsRunning = false;
-
-                Destroy(this.gameObject);
-                firstPersonController.m_WalkSpeed = 5;
-            }
-        }*/
-
         if(player.name == "FPSController"+firstPersonController.playerNumber)
         {
             if(Input.GetButtonDown("DropTrap"+firstPersonController.playerNumber) && TrapCount == 1)
@@ -61,10 +36,7 @@ public class Trap : MonoBehaviour
             }
 
         }
-
-    
         
-
     }
 
     void DropTrap()
@@ -73,20 +45,5 @@ public class Trap : MonoBehaviour
         TrapCount--;
     }
 
-    void OnCollisionEnter(Collision other)
-    {
-
-       
-       // firstPersonController = GameObject.Find(other.gameObject.name).GetComponent<FirstPersonController>();
-       
-        //firstPersonController.m_WalkSpeed = 0;
-
-        timerIsRunning = true;
-        
-        Debug.Log(timerIsRunning);
-
-        
-      
-    }
 }
 
