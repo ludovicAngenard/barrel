@@ -28,6 +28,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private LerpControlledBob m_JumpBob = new LerpControlledBob();
         [SerializeField] private float m_StepInterval;
 
+        private FirstPersonController firstPersonController;
+        public float timeRemaining = 5;
         public int playerNumber;
         private Camera m_Camera;
         private bool m_Jump;
@@ -43,6 +45,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
         public int cameraNumber;
+        private bool isTrapped = false;
+        private GameObject objectC;
+ 
 
         // Use this for initialization
         private void Start()
@@ -65,7 +70,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             RotateView();
             // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
+            if (!m_Jump && !isTrapped)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Player"+playerNumber+"Jump");
             }
@@ -82,8 +87,39 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
+            if (isTrapped)
+                {
+
+                    if (timeRemaining > 0)
+                    {
+                        timeRemaining -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        firstPersonController = GameObject.FindObjectOfType<FirstPersonController>();
+
+                        Debug.Log("Time has run out!");
+                        timeRemaining = 0;
+                        isTrapped = false;
+
+                        Destroy(objectC);
+                        m_WalkSpeed = 5;
+                    }
+                }
         }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            if(collision.gameObject.name == "Stuck(Clone)")
+            {
+                m_WalkSpeed = 0;
+                isTrapped = true;
+                objectC = collision.gameObject;
+  
+            }
+        
+        }
 
         private void FixedUpdate()
         {
