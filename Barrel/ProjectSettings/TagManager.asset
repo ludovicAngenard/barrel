@@ -7,6 +7,9 @@ TagManager:
   - camera1
   - camera2
   - camera3
+  - player1
+  - player2
+  - trap
   layers:
   - Default
   - TransparentFX

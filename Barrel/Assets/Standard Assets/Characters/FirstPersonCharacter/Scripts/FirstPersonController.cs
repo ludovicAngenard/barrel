@@ -47,6 +47,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public int cameraNumber;
         private bool isTrapped = false;
         private GameObject objectC;
+        public int spawnPosition;
  
 
         // Use this for initialization
