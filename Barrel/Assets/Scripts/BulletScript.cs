@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityStandardAssets.Characters.FirstPerson;
-using static Score;
+using  NamespaceScore;
 
 
 public class BulletScript : MonoBehaviour {
-	
-	private Shooting Shooting1,Shooting2;
+
+	private Score Score;
 
 	// Use this for initialization
 	void Start () {
-		Shooting1 = GameObject.Find("colt1").GetComponent<Shooting>();
-		Shooting2 = GameObject.Find("colt2").GetComponent<Shooting>();
+
+
+		Score = GameObject.Find("Score").GetComponent<Score>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -23,28 +23,16 @@ public class BulletScript : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-		
-		if (collision.gameObject.tag == "player1")
+
+		if (collision.gameObject.tag == "player1" || collision.gameObject.tag == "player2")
     	{
-       		Destroy(collision.gameObject);
-			Score.score2++;
-			Score.round++;
+			Score.ResetRound(collision.gameObject.GetComponent<FirstPersonController>());
+
 			Destroy(GameObject.FindWithTag("trap"));
-			
-			Shooting1.Ammo = 4;
-			Shooting2.Ammo = 4;
-			
+
     	}
-		
-		if (collision.gameObject.tag == "player2")
-		{
-       		Destroy(collision.gameObject);
-			Score.score1++;
-			Score.round++;
-			Destroy(GameObject.FindWithTag("trap"));
-		}
-		
-		
+
+		Destroy(this);
     }
 
 

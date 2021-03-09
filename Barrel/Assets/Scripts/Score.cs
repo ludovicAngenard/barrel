@@ -1,60 +1,82 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.UI;
 
-public class Score : MonoBehaviour
-{
-
-    public static int score1, score2;
-    Text score;
-    public static int round;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        score = GetComponent<Text>();
-
-    }
-
-    // Update is called once per frame
-    void Update()
+namespace NamespaceScore{
+    public class Score : MonoBehaviour
     {
 
-        score.text = "Score J1: " + score1 + "Score J2: " + score2 + " Round n°" + round;
-        Win();
-    }
+        Text scoreText, startTimer;
+        public int round;
+        private float timeLeft;
+        private bool isStarting;
+        private FirstPersonController player1, player2;
+        private Shooting Shooting1,Shooting2;
+        // Start is called before the first frame update
+        void Start()
+        {
+            timeLeft = 5f;
+            Shooting1 = GameObject.Find("colt1").GetComponent<Shooting>();
+		    Shooting2 = GameObject.Find("colt2").GetComponent<Shooting>();
 
+            player1 = GameObject.Find("FPSController1").GetComponent<FirstPersonController>();
+		    player2 = GameObject.Find("FPSController2").GetComponent<FirstPersonController>();
 
-    // void OnDisable()
-    // {
-    // PlayerPrefs.SetInt("score", score1);
-    // PlayerPrefs.SetInt("score", score2);
-    // PlayerPrefs.SetInt("round", round);
-    // }
+            scoreText = GetComponent<Text>();
+            startTimer = GetComponent<Text>();
 
-    // void OnEnable()
-    // {
+            isStarting = true;
 
-    // score.text = "Score J1: " + score1 + " Score J2:" + score2 + "Round n°" + round;
-    // score1  =  PlayerPrefs.GetInt("score");
-    // score2  =  PlayerPrefs.GetInt("score");
-    // round  =  PlayerPrefs.GetInt("round");
-    
-    // }
+        }
 
-    void Win()
-    {
-       
-            if(score1==2)
-            {
-                Debug.Log("Joueur 1 Gagnant !");
+        // Update is called once per frame
+        void Update()
+        {
+            if (!isStarting){
+                scoreText.text = "Score J1 : " + player1.score + " Score J2 : " + player2.score + " Round n°" + round;
+                Win();
+            } else {
+                countDown();
             }
-            if(score2==2)
-            {
-                Debug.Log("Joueur 2 Gagnant !");
+
+
+        }
+
+        void Win()
+        {
+
+                if(player1.score == 2)
+                {
+                    Debug.Log("Joueur 1 Gagnant !");
+                }
+                if(player2.score == 2)
+                {
+                    Debug.Log("Joueur 2 Gagnant !");
+                }
+
+        }
+        public void ResetRound(FirstPersonController winner){
+            countDown();
+            player1.ReturnToSpawn();
+            player2.ReturnToSpawn();
+            winner.score ++;
+			round++;
+			Shooting1.Ammo = 4;
+			Shooting2.Ammo = 4;
+        }
+        public void countDown(){
+            if (timeLeft >= 0){
+                isStarting = true;
+                timeLeft -= Time.deltaTime;
+                Debug.Log(timeLeft);
+                startTimer.text = (timeLeft).ToString("0");
             }
-        
+            else {
+                isStarting = false;
+                timeLeft = 5;
+            }
+        }
     }
 }

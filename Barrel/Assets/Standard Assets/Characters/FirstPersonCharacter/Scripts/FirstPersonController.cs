@@ -47,12 +47,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public int cameraNumber;
         private bool isTrapped = false;
         private GameObject objectC;
-        public int spawnPosition;
- 
+        private Vector3 spawnPosition;
+        public int score = 0;
 
         // Use this for initialization
         private void Start()
         {
+            spawnPosition = transform.position;
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = GameObject.FindWithTag("camera"+cameraNumber).GetComponent<Camera>() as Camera;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
@@ -69,6 +70,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+
+
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump && !isTrapped)
@@ -117,9 +120,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_WalkSpeed = 0;
                 isTrapped = true;
                 objectC = collision.gameObject;
-  
+
             }
-        
+
         }
 
         private void FixedUpdate()
@@ -137,7 +140,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
-
 
             if (m_CharacterController.isGrounded)
             {
@@ -163,6 +165,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
+        public void ReturnToSpawn(){
+            transform.position = spawnPosition;
+            Physics.SyncTransforms();
+        }
 
         private void ProgressStepCycle(float speed)
         {
