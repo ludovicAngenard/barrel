@@ -30,7 +30,7 @@ public class Trap : MonoBehaviour
 
         if(player.name == "FPSController"+firstPersonController.playerNumber)
         {
-            if(Input.GetButtonDown("DropTrap"+firstPersonController.playerNumber) && TrapCount == 1)
+            if(Input.GetButtonDown("Player"+firstPersonController.playerNumber+"DropTrap") && TrapCount == 1)
             {
                 DropTrap();
             }

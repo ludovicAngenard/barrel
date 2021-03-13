@@ -33,14 +33,14 @@ public class Crouch : MonoBehaviour
         if(player.name == "FPSController"+firstPersonController.playerNumber)
         {
 
-            if(Input.GetButtonDown("crouch"+firstPersonController.playerNumber))
+            if(Input.GetButtonDown("Player"+firstPersonController.playerNumber+"Crouch"))
             {
                 m_Crouch = !m_Crouch;
 
                 CheckCrouch();
             }
             
-            if(Input.GetButtonUp("crouch"+firstPersonController.playerNumber))
+            if(Input.GetButtonUp("Player"+firstPersonController.playerNumber+"Crouch"))
             {
                 m_Crouch = !m_Crouch;
 

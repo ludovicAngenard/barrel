@@ -38,12 +38,12 @@ public class Shooting : MonoBehaviour
         if(player.name == "FPSController"+firstPersonController.playerNumber)
         {
 
-            if(Input.GetButtonDown("Shoot"+firstPersonController.playerNumber))
+            if(Input.GetButtonDown("Player"+firstPersonController.playerNumber+"Shoot"))
             {
                 CheckBullet();
             }
 
-            if(Input.GetButtonDown("Reload"+firstPersonController.playerNumber) && reloadtime <= 0)
+            if(Input.GetButtonDown("Player"+firstPersonController.playerNumber+"Reload") && reloadtime <= 0)
             {
                 Reload();
             }
