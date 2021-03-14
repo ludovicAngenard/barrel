@@ -31,8 +31,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private FirstPersonController firstPersonController;
         public float timeRemaining = 5;
         public int playerNumber;
-        private Camera m_Camera;
-        private bool m_Jump;
+        public Camera m_Camera;
+        public bool m_Jump;
         private float m_YRotation;
         private Vector2 m_Input;
         private Vector3 m_MoveDir = Vector3.zero;
@@ -42,7 +42,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Vector3 m_OriginalCameraPosition;
         private float m_StepCycle;
         private float m_NextStep;
-        private bool m_Jumping;
+        public bool m_Jumping;
         private AudioSource m_AudioSource;
         public int cameraNumber;
         private bool isTrapped = false;

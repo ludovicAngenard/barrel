@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 using  NamespaceScore;
 using UnityStandardAssets.Characters.FirstPerson;
 
@@ -29,7 +30,6 @@ public class BulletScript : MonoBehaviour {
 			Score.ResetRound(collision.gameObject.GetComponent<FirstPersonController>());
 
 			Destroy(GameObject.FindWithTag("trap"));
-
     	}
 
 		Destroy(this);

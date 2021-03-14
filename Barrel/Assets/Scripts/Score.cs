@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace NamespaceScore{
     public class Score : MonoBehaviour
@@ -11,9 +12,11 @@ namespace NamespaceScore{
         Text scoreText, startTimer;
         public int round;
         private float timeLeft;
-        private bool isStarting;
+        private int unlock;
+        public bool isStarting;
         private FirstPersonController player1, player2;
         private Shooting Shooting1,Shooting2;
+        public FirstPersonController winner;
         // Start is called before the first frame update
         void Start()
         {
@@ -26,7 +29,7 @@ namespace NamespaceScore{
 
             scoreText = GetComponent<Text>();
             startTimer = GetComponent<Text>();
-
+            unlock = 0;
             isStarting = true;
 
         }
@@ -35,10 +38,21 @@ namespace NamespaceScore{
         void Update()
         {
             if (!isStarting){
+                unlock ++;
+                if (unlock == 1){
+                    player1.m_WalkSpeed = 5;
+                    player2.m_WalkSpeed = 5;
+                }
+
                 scoreText.text = "Score J1 : " + player1.score + " Score J2 : " + player2.score + " Round n°" + round;
                 Win();
             } else {
                 countDown();
+                player1.m_WalkSpeed = 0f;
+                player1.m_Jump = false;
+
+                player2.m_Jump = false;
+                player2.m_WalkSpeed = 0f;
             }
 
 
@@ -47,18 +61,23 @@ namespace NamespaceScore{
         void Win()
         {
 
-                if(player1.score == 2)
-                {
-                    Debug.Log("Joueur 1 Gagnant !");
-                }
-                if(player2.score == 2)
-                {
-                    Debug.Log("Joueur 2 Gagnant !");
-                }
+            if(player1.score == 2 ){
+                winner = player1;
+                player2.score = 0;
+                player1.score = 0;
+                SceneManager.LoadScene("finish");
+            } else if(player2.score == 2) {
+                winner = player2;
+                player2.score = 0;
+                player1.score = 0;
+                SceneManager.LoadScene("finish");
+            }
+
 
         }
         public void ResetRound(FirstPersonController winner){
             countDown();
+            unlock = 0;
             player1.ReturnToSpawn();
             player2.ReturnToSpawn();
             winner.score ++;
@@ -66,6 +85,7 @@ namespace NamespaceScore{
 			Shooting1.Ammo = 4;
 			Shooting2.Ammo = 4;
         }
+
         public void countDown(){
             if (timeLeft >= 0){
                 isStarting = true;
@@ -76,6 +96,7 @@ namespace NamespaceScore{
             else {
                 isStarting = false;
                 timeLeft = 5;
+
             }
         }
     }
