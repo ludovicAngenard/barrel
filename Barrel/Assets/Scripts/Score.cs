@@ -9,7 +9,7 @@ namespace NamespaceScore{
     public class Score : MonoBehaviour
     {
 
-        Text scoreText, startTimer;
+        private Text scoreText;
         public int round;
         private float timeLeft;
         private int unlock;
@@ -28,7 +28,6 @@ namespace NamespaceScore{
 		    player2 = GameObject.Find("FPSController2").GetComponent<FirstPersonController>();
 
             scoreText = GetComponent<Text>();
-            startTimer = GetComponent<Text>();
             unlock = 0;
             isStarting = true;
 
@@ -43,7 +42,7 @@ namespace NamespaceScore{
                     player1.m_WalkSpeed = 5;
                     player2.m_WalkSpeed = 5;
                 }
-
+                Debug.Log("________________ " +  scoreText.text + "____________________");
                 scoreText.text = "Score J1 : " + player1.score + " Score J2 : " + player2.score + " Round n°" + round;
                 Win();
             } else {
@@ -54,8 +53,6 @@ namespace NamespaceScore{
                 player2.m_Jump = false;
                 player2.m_WalkSpeed = 0f;
             }
-
-
         }
 
         void Win()
@@ -65,6 +62,7 @@ namespace NamespaceScore{
                 winner = player1;
                 player2.score = 0;
                 player1.score = 0;
+
                 SceneManager.LoadScene("finish");
             } else if(player2.score == 2) {
                 winner = player2;
@@ -91,7 +89,7 @@ namespace NamespaceScore{
                 isStarting = true;
                 timeLeft -= Time.deltaTime;
                 Debug.Log(timeLeft);
-                startTimer.text = (timeLeft).ToString("0");
+                scoreText.text = (timeLeft).ToString("0");
             }
             else {
                 isStarting = false;
