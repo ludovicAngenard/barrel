@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using  NamespaceScore;
-
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class BulletScript : MonoBehaviour {
 
