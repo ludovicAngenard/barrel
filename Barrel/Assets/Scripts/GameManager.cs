@@ -19,9 +19,7 @@ namespace NamespaceGameManager{
         public GameObject winner, looser;
         private GameObject gameObjectPlayer1, gameObjectPlayer2;
         // Start is called before the first frame update
-        private void Awake(){
-            DontDestroyOnLoad(this.gameObject);
-        }
+
         void Start()
         {
             timeLeft = 5f;
@@ -84,22 +82,10 @@ namespace NamespaceGameManager{
             SceneManager.LoadScene("finish");
             winner.GetComponent<FirstPersonController>().m_Camera.enabled = false;
             looser.GetComponent<FirstPersonController>().m_Camera.enabled = false;
-            Destroy(GameObject.Find("FPSController2").GetComponent<MeshCollider>());
-            Destroy(GameObject.Find("FPSController2").GetComponent<CapsuleCollider>());
-            Destroy(GameObject.Find("FPSController2").GetComponent<Rigidbody>());
-            Destroy(GameObject.Find("FPSController2").GetComponent<Crouch>());
-            Destroy(GameObject.Find("FPSController2").GetComponent<Trap>());
-            Destroy(GameObject.Find("FPSController2").GetComponent<FirstPersonController>());
-            Destroy(GameObject.Find("FPSController2").GetComponent<CharacterController>());
-            Destroy(GameObject.Find("FPSController1").GetComponent<MeshCollider>());
-            Destroy(GameObject.Find("FPSController1").GetComponent<CapsuleCollider>());
-            Destroy(GameObject.Find("FPSController1").GetComponent<Rigidbody>());
-            Destroy(GameObject.Find("FPSController1").GetComponent<Crouch>());
-             Destroy(GameObject.Find("FPSController1").GetComponent<Trap>());
-            Destroy(GameObject.Find("FPSController1").GetComponent<FirstPersonController>());
-            Destroy(GameObject.Find("FPSController1").GetComponent<CharacterController>());
+            
             looser.transform.position = new Vector3(-2.57f, -0.61f, -1.88f);
             winner.transform.position = new Vector3(3.23f, 2.2f, -1.88f);
+            Physics.SyncTransforms();
             looser.transform.rotation = Quaternion.Euler(0,180,0);
             winner.transform.rotation = Quaternion.Euler(0,180,0);
             GameObject.Find("FirstPersonCharacter").transform.rotation = Quaternion.Euler(0,0,0);
@@ -114,6 +100,16 @@ namespace NamespaceGameManager{
 			round++;
 			Shooting1.Ammo = 4;
 			Shooting2.Ammo = 4;
+        }
+
+        public GameObject GetWinner()
+        {
+            return winner;
+        }
+
+        public GameObject GetLooser()
+        {
+            return looser;
         }
 
         public void countDown(){

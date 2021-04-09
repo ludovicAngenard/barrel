@@ -10,12 +10,14 @@ namespace namespaceWinnerText{
     public class WinnerText : GameManager
     {
         private Text winnerText;
+        public GameManager gameManager;
         void Start()
         {
             isFinish = true;
             winnerText = GetComponent<Text>();
             winnerText.text = "oui";
-            winnerText.text = "player" + winner.GetComponent<FirstPersonController>().playerNumber + ", vous avez Gagné !";
+            gameManager = GameObject.Find("Score").GetComponent<GameManager>();
+            winnerText.text = "player" + gameManager.GetWinner().GetComponent<FirstPersonController>().playerNumber + ", vous avez Gagné !";
         }
         void ChangeText(){
             winnerText.text = winnerText.name + ", vous avez Ggané !";
