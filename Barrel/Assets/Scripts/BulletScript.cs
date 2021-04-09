@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.FirstPerson;
-using  NamespaceScore;
-using UnityStandardAssets.Characters.FirstPerson;
+using  NamespaceGameManager;
+
+
 
 public class BulletScript : MonoBehaviour {
 
-	private Score Score;
+	private GameManager GameManager;
 
 	// Use this for initialization
 	void Start () {
 
 
-		Score = GameObject.Find("Score").GetComponent<Score>();
+		GameManager = GameObject.Find("Score").GetComponent<GameManager>();
 	}
 
 	// Update is called once per frame
@@ -27,7 +28,7 @@ public class BulletScript : MonoBehaviour {
 
 		if (collision.gameObject.tag == "player1" || collision.gameObject.tag == "player2")
     	{
-			Score.ResetRound(collision.gameObject.GetComponent<FirstPersonController>());
+			GameManager.ResetRound(collision.gameObject.GetComponent<FirstPersonController>());
 
 			Destroy(GameObject.FindWithTag("trap"));
     	}

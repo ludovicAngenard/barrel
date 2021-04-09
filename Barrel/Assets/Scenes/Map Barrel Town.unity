@@ -5341,11 +5341,12 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69d827cb44f3ea64aa99221c93695bcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 92bdc591fe4c01341b663783edcd7d44, type: 3}
   m_Name:
   m_EditorClassIdentifier:
   round: 0
   isStarting: 0
+  winner: {fileID: 0}
 --- !u!114 &1431119411
 MonoBehaviour:
   m_ObjectHideFlags: 0

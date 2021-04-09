@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 using System;
 using System.Timers;
-using NamespaceScore;
+using NamespaceGameManager;
 
 
 public class Trap : MonoBehaviour
@@ -14,14 +14,14 @@ public class Trap : MonoBehaviour
     public GameObject theTrap;
     public Transform spawnPoint;
     public int TrapCount;
-    private Score Score;
+    private GameManager GameManager;
     private Vector3 target;
 
     // Start is called before the first frame update
 
     void Start()
     {
-    Score = GameObject.Find("Score").GetComponent<Score>();
+    GameManager = GameObject.Find("Score").GetComponent<GameManager>();
     firstPersonController = player.GetComponent<FirstPersonController>();
     TrapCount = 1;
     }
@@ -30,7 +30,7 @@ public class Trap : MonoBehaviour
     void Update()
     {
         target = firstPersonController.transform.position + firstPersonController.m_Camera.transform.forward;
-        if(player.name == "FPSController"+firstPersonController.playerNumber && !Score.isStarting)
+        if(player.name == "FPSController"+firstPersonController.playerNumber && !GameManager.isStarting)
         {
             if(Input.GetButtonDown("Player"+firstPersonController.playerNumber+"DropTrap") && TrapCount == 1)
             {

@@ -51,6 +51,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public int score = 0;
 
         // Use this for initialization
+        private void Awake(){
+            DontDestroyOnLoad(this.gameObject);
+        }
         private void Start()
         {
             spawnPosition = transform.position;
