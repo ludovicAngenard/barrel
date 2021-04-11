@@ -15,7 +15,7 @@ public class BulletScript : MonoBehaviour {
 	void Start () {
 
 
-		GameManager = GameObject.Find("Score").GetComponent<GameManager>();
+		GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 
 	// Update is called once per frame
@@ -33,6 +33,7 @@ public class BulletScript : MonoBehaviour {
 			Destroy(GameObject.FindWithTag("trap"));
     	}
 
+		Debug.Log("YES collision : " + collision);
 		Destroy(this);
     }
 }

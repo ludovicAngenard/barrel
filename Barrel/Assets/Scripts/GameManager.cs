@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Score;
 
 namespace NamespaceGameManager{
     public class GameManager : MonoBehaviour
     {
-
-        private Text scoreText;
         public int round;
         private float timeLeft;
         private int unlock;
         public bool isStarting, isFinish;
-        private FirstPersonController player1, player2;
+        private FirstPersonController fpsController1, fpsController2;
         private Shooting Shooting1,Shooting2;
         public GameObject winner, looser;
         private GameObject gameObjectPlayer1, gameObjectPlayer2;
+        private ScoreText scoreText;
         // Start is called before the first frame update
+
+        private void Awake(){
+            DontDestroyOnLoad(this.gameObject);
+        }
 
         void Start()
         {
@@ -29,10 +32,10 @@ namespace NamespaceGameManager{
 
             gameObjectPlayer1 = GameObject.Find("FPSController1");
             gameObjectPlayer2 = GameObject.Find("FPSController2");
-            player1 = gameObjectPlayer1.GetComponent<FirstPersonController>();
-		    player2 = gameObjectPlayer2.GetComponent<FirstPersonController>();
+            fpsController1 = gameObjectPlayer1.GetComponent<FirstPersonController>();
+		    fpsController2 = gameObjectPlayer2.GetComponent<FirstPersonController>();
 
-            scoreText = GetComponent<Text>();
+            scoreText = GameObject.Find("Score").GetComponent<ScoreText>();
             unlock = 0;
             isStarting = true;
             isFinish = false;
@@ -46,21 +49,21 @@ namespace NamespaceGameManager{
                 if (!isStarting){
                     unlock ++;
                     if (unlock == 1){
-                        player1.m_WalkSpeed = 5;
-                        player2.m_WalkSpeed = 5;
+                        fpsController1.m_WalkSpeed = 5;
+                        fpsController2.m_WalkSpeed = 5;
                     }
-                    scoreText.text = "Score J1 : " + player1.score + " Score J2 : " + player2.score + " Round n°" + round;
-                    if (player1.score == 2 || player2.score == 2){
+                    scoreText.UpdateScoreText("Score J1 : " + fpsController1.score + " Score J2 : " + fpsController2.score + " Round n°" + round);
+                    if (fpsController1.score == 2 || fpsController2.score == 2){
                         isFinish = true;
                         Win();
                     }
                 } else {
                     countDown();
-                    player1.m_WalkSpeed = 0f;
-                    player1.m_Jump = false;
+                    fpsController1.m_WalkSpeed = 0f;
+                    fpsController1.m_Jump = false;
 
-                    player2.m_Jump = false;
-                    player2.m_WalkSpeed = 0f;
+                    fpsController2.m_Jump = false;
+                    fpsController2.m_WalkSpeed = 0f;
                 }
             }
         }
@@ -68,38 +71,29 @@ namespace NamespaceGameManager{
         void Win()
         {
 
-            if(player1.score == 2 ){
+            if(fpsController1.score == 2 ){
                 winner = gameObjectPlayer1;
                 looser = gameObjectPlayer2;
 
-            } else if(player2.score == 2) {
+            } else if(fpsController2.score == 2) {
                 looser = gameObjectPlayer1;
                 winner = gameObjectPlayer2;
             }
 
-            player2.score = 0;
-            player1.score = 0;
-            SceneManager.LoadScene("finish");
-            winner.GetComponent<FirstPersonController>().m_Camera.enabled = false;
-            looser.GetComponent<FirstPersonController>().m_Camera.enabled = false;
-            
-            looser.transform.position = new Vector3(-2.57f, -0.61f, -1.88f);
-            winner.transform.position = new Vector3(3.23f, 2.2f, -1.88f);
-            Physics.SyncTransforms();
-            looser.transform.rotation = Quaternion.Euler(0,180,0);
-            winner.transform.rotation = Quaternion.Euler(0,180,0);
-            GameObject.Find("FirstPersonCharacter").transform.rotation = Quaternion.Euler(0,0,0);
-
+            fpsController2.score = 0;
+            fpsController1.score = 0;
+           FinishScene();
         }
         public void ResetRound(FirstPersonController winner){
             countDown();
             unlock = 0;
-            player1.ReturnToSpawn();
-            player2.ReturnToSpawn();
+            fpsController1.ReturnToSpawn();
+            fpsController2.ReturnToSpawn();
             winner.score ++;
 			round++;
 			Shooting1.Ammo = 4;
 			Shooting2.Ammo = 4;
+            isFinish = false;
         }
 
         public GameObject GetWinner()
@@ -116,8 +110,7 @@ namespace NamespaceGameManager{
             if (timeLeft >= 0){
                 isStarting = true;
                 timeLeft -= Time.deltaTime;
-                Debug.Log(timeLeft);
-                scoreText.text = (timeLeft).ToString("0");
+                scoreText.UpdateScoreText(timeLeft.ToString("0"));
             }
             else {
                 isStarting = false;
@@ -125,5 +118,19 @@ namespace NamespaceGameManager{
 
             }
         }
+        void FinishScene(){
+            SceneManager.LoadScene("finish");
+            winner.GetComponent<FirstPersonController>().m_Camera.enabled = false;
+            looser.GetComponent<FirstPersonController>().m_Camera.enabled = false;
+
+            looser.transform.position = new Vector3(-2.57f, -0.61f, -1.88f);
+            winner.transform.position = new Vector3(3.23f, 2.2f, -1.88f);
+            Physics.SyncTransforms();
+            looser.transform.rotation = Quaternion.Euler(0,180,0);
+            winner.transform.rotation = Quaternion.Euler(0,180,0);
+            GameObject.Find("FirstPersonCharacter").transform.rotation = Quaternion.Euler(0,0,0);
+
+        }
+
     }
 }
