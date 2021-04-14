@@ -32,8 +32,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void LookRotation(Transform character, Transform camera, int playerNumber)
         {
-            String MX = "Player"+playerNumber+"CameraX";
-            String MY = "Player"+playerNumber+"CameraY";
+            String MX;
+            String MY;
+
+            if(playerNumber != 2){
+                MX = "Mouse X";
+                MY = "Mouse Y";
+            }
+            else
+            {
+                MX = "Mouse X2";
+                MY = "Mouse Y2";
+            }
+
 
         float yRot = CrossPlatformInputManager.GetAxis(MX) * XSensitivity;
             float xRot = CrossPlatformInputManager.GetAxis(MY) * YSensitivity;
@@ -85,7 +96,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else if(Input.GetMouseButtonUp(0))
             {
-                m_cursorIsLocked = true;
+                m_cursorIsLocked = false;
             }
 
             if (m_cursorIsLocked)

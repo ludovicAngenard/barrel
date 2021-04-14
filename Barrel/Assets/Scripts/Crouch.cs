@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
+using NamespaceGameManager;
 
 public class Crouch : MonoBehaviour
 {
@@ -29,7 +30,8 @@ public class Crouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(GameManager.Running == true)
+        {
         if(player.name == "FPSController"+firstPersonController.playerNumber)
         {
 
@@ -46,6 +48,7 @@ public class Crouch : MonoBehaviour
 
                 CheckCrouch();
             }
+        }
         }
 
     }
