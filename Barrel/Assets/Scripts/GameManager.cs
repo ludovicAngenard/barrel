@@ -15,7 +15,6 @@ namespace NamespaceGameManager{
         private Shooting Shooting1,Shooting2;
         public GameObject winner, looser;
         private GameObject gameObjectPlayer1, gameObjectPlayer2;
-        private ScoreText scoreText;
         // Start is called before the first frame update
 
         private void Awake(){
@@ -34,7 +33,6 @@ namespace NamespaceGameManager{
             fpsController1 = gameObjectPlayer1.GetComponent<FirstPersonController>();
 		    fpsController2 = gameObjectPlayer2.GetComponent<FirstPersonController>();
 
-            scoreText = GameObject.Find("Score").GetComponent<ScoreText>();
             isStarting = true;
             isFinish = false;
 
@@ -45,7 +43,6 @@ namespace NamespaceGameManager{
         {
             if (!isFinish){
                 if (!isStarting){
-                    scoreText.UpdateScoreText("Score J1 : " + fpsController1.score + " Score J2 : " + fpsController2.score + " Round n°" + round);
                     if (fpsController1.score >= 2 || fpsController2.score >= 2){
                         isFinish = true;
                         Win();
@@ -54,7 +51,6 @@ namespace NamespaceGameManager{
                     PlayersImmobility();
                     countDown();
                     if (timeLeft > 0){
-                        scoreText.UpdateScoreText(timeLeft.ToString("0"));
                         isStarting = true;
                     } else {
                         isStarting = false;

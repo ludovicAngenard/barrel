@@ -18,6 +18,8 @@ public class Crouch : MonoBehaviour
 
     private float m_OriginalHeight;
 
+    private GameManager GameManager;
+
     [SerializeField] private float m_CrouchHeight = 0.5f;
     // Start is called before the first frame update
     void Start()
@@ -25,12 +27,14 @@ public class Crouch : MonoBehaviour
         m_CharacterController = player.GetComponent<CharacterController>();
         m_OriginalHeight = m_CharacterController.height;
         firstPersonController = player.GetComponent<FirstPersonController>();
+
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.Running == true)
+        if(GameManager.isStarting == true)
         {
         if(player.name == "FPSController"+firstPersonController.playerNumber)
         {

@@ -177,7 +177,13 @@ MonoBehaviour:
   m_StepInterval: 5
   timeRemaining: 5
   playerNumber: 1
+  m_Camera: {fileID: 0}
+  m_Jump: 0
+  m_MoveDir: {x: 0, y: 0, z: 0}
+  m_Jumping: 0
   cameraNumber: 1
+  isTrapped: 0
+  score: 0
 --- !u!54 &1320374405097772521
 Rigidbody:
   m_ObjectHideFlags: 0
