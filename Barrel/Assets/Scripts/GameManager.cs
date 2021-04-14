@@ -10,7 +10,6 @@ namespace NamespaceGameManager{
     {
         public int round;
         private float timeLeft;
-        private int unlock;
         public bool isStarting, isFinish;
         private FirstPersonController fpsController1, fpsController2;
         private Shooting Shooting1,Shooting2;
@@ -36,7 +35,6 @@ namespace NamespaceGameManager{
 		    fpsController2 = gameObjectPlayer2.GetComponent<FirstPersonController>();
 
             scoreText = GameObject.Find("Score").GetComponent<ScoreText>();
-            unlock = 0;
             isStarting = true;
             isFinish = false;
 
@@ -47,23 +45,33 @@ namespace NamespaceGameManager{
         {
             if (!isFinish){
                 if (!isStarting){
-                    unlock ++;
-                    if (unlock == 1){
-                        fpsController1.m_WalkSpeed = 5;
-                        fpsController2.m_WalkSpeed = 5;
-                    }
                     scoreText.UpdateScoreText("Score J1 : " + fpsController1.score + " Score J2 : " + fpsController2.score + " Round n°" + round);
-                    if (fpsController1.score == 2 || fpsController2.score == 2){
+                    if (fpsController1.score >= 2 || fpsController2.score >= 2){
                         isFinish = true;
                         Win();
                     }
                 } else {
+                    PlayersImmobility();
                     countDown();
-                    fpsController1.m_WalkSpeed = 0f;
-                    fpsController1.m_Jump = false;
-
-                    fpsController2.m_Jump = false;
-                    fpsController2.m_WalkSpeed = 0f;
+                    if (timeLeft > 0){
+                        scoreText.UpdateScoreText(timeLeft.ToString("0"));
+                        isStarting = true;
+                    } else {
+                        isStarting = false;
+                        fpsController1.m_WalkSpeed = 5;
+                        fpsController2.m_WalkSpeed = 5;
+                        fpsController2.m_RunSpeed = 8f;
+                        fpsController1.m_RunSpeed = 8f;
+                    }
+                }
+            } else {
+                countDown();
+                if (timeLeft <= 0){
+                    isFinish = false;
+                    SceneManager.LoadScene("Map Barrel Town");
+                    Destroy(gameObjectPlayer1);
+                    Destroy(gameObjectPlayer2);
+                    Destroy(GameObject.Find("GameManager"));
                 }
             }
         }
@@ -71,11 +79,11 @@ namespace NamespaceGameManager{
         void Win()
         {
 
-            if(fpsController1.score == 2 ){
+            if(fpsController1.score >= 2 ){
                 winner = gameObjectPlayer1;
                 looser = gameObjectPlayer2;
 
-            } else if(fpsController2.score == 2) {
+            } else if(fpsController2.score >= 2) {
                 looser = gameObjectPlayer1;
                 winner = gameObjectPlayer2;
             }
@@ -86,7 +94,6 @@ namespace NamespaceGameManager{
         }
         public void ResetRound(FirstPersonController winner){
             countDown();
-            unlock = 0;
             fpsController1.ReturnToSpawn();
             fpsController2.ReturnToSpawn();
             winner.score ++;
@@ -94,6 +101,7 @@ namespace NamespaceGameManager{
 			Shooting1.Ammo = 4;
 			Shooting2.Ammo = 4;
             isFinish = false;
+            isStarting = true;
         }
 
         public GameObject GetWinner()
@@ -105,29 +113,42 @@ namespace NamespaceGameManager{
         {
             return looser;
         }
-
+        public void PlayersImmobility(){
+            fpsController1.m_WalkSpeed = 0f;
+            fpsController1.m_Jump = false;
+            fpsController2.m_Jump = false;
+            fpsController2.m_RunSpeed = 0f;
+            fpsController1.m_RunSpeed = 0f;
+            fpsController2.m_WalkSpeed = 0f;
+        }
         public void countDown(){
             if (timeLeft >= 0){
-                isStarting = true;
                 timeLeft -= Time.deltaTime;
-                scoreText.UpdateScoreText(timeLeft.ToString("0"));
             }
             else {
-                isStarting = false;
                 timeLeft = 5;
 
             }
         }
         void FinishScene(){
             SceneManager.LoadScene("finish");
-            winner.GetComponent<FirstPersonController>().m_Camera.enabled = false;
-            looser.GetComponent<FirstPersonController>().m_Camera.enabled = false;
+            GameObject[] players = {winner, looser};
+            foreach (var player in players)
+            {
+                player.GetComponent<FirstPersonController>().m_Camera.enabled = false;
+                player.GetComponent<FirstPersonController>().m_WalkSpeed = 0;
+                player.GetComponent<FirstPersonController>().m_Jump = false;
+                 player.GetComponent<FirstPersonController>().m_RunSpeed = 0f;
+                Destroy(player.GetComponent<Crouch>());
+                Destroy(player.GetComponent<Trap>());
+            }
 
             looser.transform.position = new Vector3(-2.57f, -0.61f, -1.88f);
             winner.transform.position = new Vector3(3.23f, 2.2f, -1.88f);
-            Physics.SyncTransforms();
             looser.transform.rotation = Quaternion.Euler(0,180,0);
-            winner.transform.rotation = Quaternion.Euler(0,180,0);
+            winner.transform.rotation = Quaternion.Euler(0,0,0);
+            Physics.SyncTransforms();
+
             GameObject.Find("FirstPersonCharacter").transform.rotation = Quaternion.Euler(0,0,0);
 
         }

@@ -15,7 +15,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public bool m_IsWalking;
         public float m_WalkSpeed;
 
-        [SerializeField] private float m_RunSpeed;
+        [SerializeField] public float m_RunSpeed;
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
         [SerializeField] private float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
@@ -28,7 +28,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private LerpControlledBob m_JumpBob = new LerpControlledBob();
         [SerializeField] private float m_StepInterval;
 
-        private FirstPersonController firstPersonController;
         public float timeRemaining = 5;
         public int playerNumber;
         public Camera m_Camera;
@@ -45,7 +44,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public bool m_Jumping;
         private AudioSource m_AudioSource;
         public int cameraNumber;
-        private bool isTrapped = false;
+        public bool isTrapped = false;
         private GameObject objectC;
         private Vector3 spawnPosition;
         public int score = 0;
@@ -104,14 +103,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     }
                     else
                     {
-                        firstPersonController = GameObject.FindObjectOfType<FirstPersonController>();
-
                         Debug.Log("Time has run out!");
-                        timeRemaining = 0;
+
                         isTrapped = false;
 
                         Destroy(objectC);
                         m_WalkSpeed = 5;
+                        timeRemaining = 5;
                     }
                 }
         }

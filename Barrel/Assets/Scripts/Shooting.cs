@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
-
+using NamespaceGameManager;
 public class Shooting : MonoBehaviour
 {
 
@@ -15,6 +15,7 @@ public class Shooting : MonoBehaviour
     public float reloadtime;
     public float shoottime;
     private FirstPersonController firstPersonController;
+    private GameManager gameManager;
 
 
 
@@ -23,6 +24,7 @@ public class Shooting : MonoBehaviour
     {
     m_CharacterController = player.GetComponent<CharacterController>();
     firstPersonController = player.GetComponent<FirstPersonController>();
+    gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     Ammo = 4;
     shoottime = 0.0f;
     reloadtime = 0.0f;
@@ -35,7 +37,7 @@ public class Shooting : MonoBehaviour
         UpdateShootTime();
         UpdateReloadTime();
 
-        if(player.name == "FPSController"+firstPersonController.playerNumber)
+        if(player.name == "FPSController"+firstPersonController.playerNumber && !gameManager.isFinish)
         {
 
             if(Input.GetButtonDown("Player"+firstPersonController.playerNumber+"Shoot"))

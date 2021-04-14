@@ -32,8 +32,6 @@ public class BulletScript : MonoBehaviour {
 
 			Destroy(GameObject.FindWithTag("trap"));
     	}
-
-		Debug.Log("YES collision : " + collision);
-		Destroy(this);
+		Destroy(GameObject.Find("Sphere(Clone)"));
     }
 }
