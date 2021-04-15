@@ -10,6 +10,7 @@ TagManager:
   - player1
   - player2
   - trap
+  - Crosshair
   layers:
   - Default
   - TransparentFX

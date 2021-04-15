@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
+namespace NamespaceGameControl{
 public class GameControl : MonoBehaviour
 {
     public static bool gameIsPaused = false;
@@ -51,9 +52,20 @@ public class GameControl : MonoBehaviour
     public void QuitGame()
     {
         ResumeGame();
+        GameObject[] players = {GameObject.Find("FPSController1"), GameObject.Find("FPSController2")};
+            foreach (var player in players)
+            {
+                Destroy(player);
+                
+                
+            }
+
+            Destroy(GameObject.Find("GameManager"));
+
         SceneManager.LoadScene("Menu2");
     }
 
     
 
+}
 }

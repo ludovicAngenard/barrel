@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.SceneManagement;
 using Score;
+using UnityEngine.UI;
 
 namespace NamespaceGameManager{
     public class GameManager : MonoBehaviour
@@ -15,6 +16,7 @@ namespace NamespaceGameManager{
         private Shooting Shooting1,Shooting2;
         public GameObject winner, looser;
         private GameObject gameObjectPlayer1, gameObjectPlayer2;
+        private ScoreText scoreText;
         // Start is called before the first frame update
 
         private void Awake(){
@@ -36,6 +38,8 @@ namespace NamespaceGameManager{
             isStarting = true;
             isFinish = false;
 
+            scoreText = GameObject.Find("Round").GetComponent<ScoreText>();
+
         }
 
         // Update is called once per frame
@@ -43,6 +47,7 @@ namespace NamespaceGameManager{
         {
             if (!isFinish){
                 if (!isStarting){
+                    // scoreText.UpdateScoreText("Round :"+ round);
                     if (fpsController1.score >= 2 || fpsController2.score >= 2){
                         isFinish = true;
                         Win();
@@ -52,6 +57,7 @@ namespace NamespaceGameManager{
                     countDown();
                     if (timeLeft > 0){
                         isStarting = true;
+                        // scoreText.UpdateScoreText(timeLeft.ToString("0"));
                     } else {
                         isStarting = false;
                         fpsController1.m_WalkSpeed = 5;
@@ -64,7 +70,7 @@ namespace NamespaceGameManager{
                 countDown();
                 if (timeLeft <= 0){
                     isFinish = false;
-                    SceneManager.LoadScene("Map Barrel Town");
+                    SceneManager.LoadScene("Menu2");
                     Destroy(gameObjectPlayer1);
                     Destroy(gameObjectPlayer2);
                     Destroy(GameObject.Find("GameManager"));
@@ -88,16 +94,25 @@ namespace NamespaceGameManager{
             fpsController1.score = 0;
            FinishScene();
         }
-        public void ResetRound(FirstPersonController winner){
+        public void ResetRound(FirstPersonController looserRound){
             countDown();
             fpsController1.ReturnToSpawn();
             fpsController2.ReturnToSpawn();
-            winner.score ++;
 			round++;
 			Shooting1.Ammo = 4;
 			Shooting2.Ammo = 4;
             isFinish = false;
             isStarting = true;
+
+            if(fpsController1.playerNumber == looserRound.playerNumber)
+            {
+                fpsController2.score++;
+            }
+            else
+            {
+                fpsController1.score++;
+            }
+
         }
 
         public GameObject GetWinner()
@@ -137,6 +152,11 @@ namespace NamespaceGameManager{
                  player.GetComponent<FirstPersonController>().m_RunSpeed = 0f;
                 Destroy(player.GetComponent<Crouch>());
                 Destroy(player.GetComponent<Trap>());
+                
+            }
+
+            foreach (var gameObj in GameObject.FindGameObjectsWithTag("Crosshair")){
+            Destroy(gameObj);
             }
 
             looser.transform.position = new Vector3(-2.57f, -0.61f, -1.88f);
