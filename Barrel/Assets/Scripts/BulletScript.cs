@@ -15,7 +15,7 @@ public class BulletScript : MonoBehaviour {
 	void Start () {
 
 
-		GameManager = GameObject.Find("GameManagerTEST").GetComponent<GameManager>();
+		GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 
 	// Update is called once per frame

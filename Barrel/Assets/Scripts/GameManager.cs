@@ -19,10 +19,6 @@ namespace NamespaceGameManager{
         private ScoreText scoreText;
         // Start is called before the first frame update
 
-        private void Awake(){
-            DontDestroyOnLoad(this.gameObject);
-        }
-
         void Start()
         {
             timeLeft = 5f;
@@ -40,7 +36,7 @@ namespace NamespaceGameManager{
 
             scoreText = GameObject.Find("Round").GetComponent<ScoreText>();
 
-            
+
 
         }
 
@@ -49,20 +45,20 @@ namespace NamespaceGameManager{
         {
             if (!isFinish){
                 if (!isStarting){
-                    // scoreText.UpdateScoreText("Round :"+ round);
+                    scoreText.UpdateScoreText("Round : "+ round);
                     if (fpsController1.score >= 2 || fpsController2.score >= 2){
-                        
+
                         isFinish = true;
-                        
+
                         Win();
                     }
                 } else {
-                    
+
                     PlayersImmobility();
                     countDown();
                     if (timeLeft > 0){
+                        scoreText.UpdateScoreText(timeLeft.ToString("0"));
                         isStarting = true;
-                        // scoreText.UpdateScoreText(timeLeft.ToString("0"));
                     } else {
                         isStarting = false;
                         fpsController1.m_WalkSpeed = 5;
@@ -72,43 +68,37 @@ namespace NamespaceGameManager{
                     }
                 }
             } else {
-                
+                isStarting = false;
                 countDown();
                 if (timeLeft <= 0){
                     isFinish = false;
                     SceneManager.LoadScene("Menu2");
                     Destroy(gameObjectPlayer1);
                     Destroy(gameObjectPlayer2);
-                    Destroy(GameObject.Find("GameManagerTEST"));
+                    Destroy(GameObject.Find("GameManager"));
                 }
             }
-            if(isFinish)
-            {
-                this.winner = gameObjectPlayer1;
-                this.looser = gameObjectPlayer2;
-            }
-            
         }
 
         void Win()
         {
 
             if(fpsController1.score >= 2 ){
-                this.winner = gameObjectPlayer1;
-                this.looser = gameObjectPlayer2;
+                winner = gameObjectPlayer1;
+                looser = gameObjectPlayer2;
 
             } else if(fpsController2.score >= 2) {
-                this.looser = gameObjectPlayer1;
-                this.winner = gameObjectPlayer2;
+                looser = gameObjectPlayer1;
+                winner = gameObjectPlayer2;
             }
 
             fpsController2.score = 0;
             fpsController1.score = 0;
-           
+
            Debug.Log("winnerX"+winner);
            Debug.Log("looserX"+looser);
            FinishScene();
-        
+
         }
         public void ResetRound(FirstPersonController looserRound){
             countDown();
@@ -172,7 +162,7 @@ namespace NamespaceGameManager{
                  player.GetComponent<FirstPersonController>().m_RunSpeed = 0f;
                 Destroy(player.GetComponent<Crouch>());
                 Destroy(player.GetComponent<Trap>());
-                
+
             }
 
             foreach (var gameObj in GameObject.FindGameObjectsWithTag("Crosshair")){

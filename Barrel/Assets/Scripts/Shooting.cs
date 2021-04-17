@@ -29,8 +29,8 @@ public class Shooting : MonoBehaviour
     {
     m_CharacterController = player.GetComponent<CharacterController>();
     firstPersonController = player.GetComponent<FirstPersonController>();
-    GameManager = GameObject.Find("GameManagerTEST").GetComponent<GameManager>();
-    GameControl = GameObject.Find("GameManagerTEST").GetComponent<GameControl>();
+    GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    GameControl = GameObject.Find("GameManager").GetComponent<GameControl>();
     Ammo = 4;
     shoottime = 0.0f;
     reloadtime = 0.0f;
@@ -44,7 +44,7 @@ public class Shooting : MonoBehaviour
         UpdateReloadTime();
         if(!GameControl.gameIsPaused && !GameManager.isStarting)
        {
-        
+
 
         if(player.name == "FPSController"+firstPersonController.playerNumber && !GameManager.isFinish)
         {
@@ -114,7 +114,7 @@ public class Shooting : MonoBehaviour
         Debug.Log(hit.transform.name);
         }
        GameObject impact = Instantiate(bullet, hit.point, Quaternion.LookRotation(hit.normal));
-       
+
        Rigidbody rig = impact.GetComponent<Rigidbody>();
 
         rig.AddForce(spawnPoint.forward * bulletSpeed, ForceMode.Impulse);

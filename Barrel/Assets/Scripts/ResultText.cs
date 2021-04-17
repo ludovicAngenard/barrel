@@ -11,21 +11,20 @@ public class ResultText : MonoBehaviour
 {
     private Text text;
     private GameManager gameManager;
-    private FirstPersonController fpsController;
+    public FirstPersonController fpsController;
     public string result;
     void Start()
     {
         text = GetComponent<Text>();
-        gameManager = GameObject.Find("GameManagerTEST").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         gameManager.isFinish = true;
         FindPlayer();
 
-        Debug.Log("winner"+gameManager.winner);
-        Debug.Log("looser"+gameManager.looser);
     }
 
     void Update()
     {
+
         text.text = "player" + fpsController.playerNumber + ", vous avez " + result + "!";
     }
 
