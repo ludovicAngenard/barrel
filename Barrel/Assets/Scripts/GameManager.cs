@@ -40,6 +40,8 @@ namespace NamespaceGameManager{
 
             scoreText = GameObject.Find("Round").GetComponent<ScoreText>();
 
+            
+
         }
 
         // Update is called once per frame
@@ -49,10 +51,13 @@ namespace NamespaceGameManager{
                 if (!isStarting){
                     // scoreText.UpdateScoreText("Round :"+ round);
                     if (fpsController1.score >= 2 || fpsController2.score >= 2){
+                        
                         isFinish = true;
+                        
                         Win();
                     }
                 } else {
+                    
                     PlayersImmobility();
                     countDown();
                     if (timeLeft > 0){
@@ -67,32 +72,43 @@ namespace NamespaceGameManager{
                     }
                 }
             } else {
+                
                 countDown();
                 if (timeLeft <= 0){
                     isFinish = false;
                     SceneManager.LoadScene("Menu2");
                     Destroy(gameObjectPlayer1);
                     Destroy(gameObjectPlayer2);
-                    Destroy(GameObject.Find("GameManager"));
+                    Destroy(GameObject.Find("GameManagerTEST"));
                 }
             }
+            if(isFinish)
+            {
+                this.winner = gameObjectPlayer1;
+                this.looser = gameObjectPlayer2;
+            }
+            
         }
 
         void Win()
         {
 
             if(fpsController1.score >= 2 ){
-                winner = gameObjectPlayer1;
-                looser = gameObjectPlayer2;
+                this.winner = gameObjectPlayer1;
+                this.looser = gameObjectPlayer2;
 
             } else if(fpsController2.score >= 2) {
-                looser = gameObjectPlayer1;
-                winner = gameObjectPlayer2;
+                this.looser = gameObjectPlayer1;
+                this.winner = gameObjectPlayer2;
             }
 
             fpsController2.score = 0;
             fpsController1.score = 0;
+           
+           Debug.Log("winnerX"+winner);
+           Debug.Log("looserX"+looser);
            FinishScene();
+        
         }
         public void ResetRound(FirstPersonController looserRound){
             countDown();
@@ -143,6 +159,10 @@ namespace NamespaceGameManager{
         }
         void FinishScene(){
             SceneManager.LoadScene("finish");
+
+            Debug.Log("winnerX"+winner);
+           Debug.Log("looserX"+looser);
+
             GameObject[] players = {winner, looser};
             foreach (var player in players)
             {

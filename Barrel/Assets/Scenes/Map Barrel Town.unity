@@ -6296,6 +6296,7 @@ GameObject:
   - component: {fileID: 1434739348}
   - component: {fileID: 1434739347}
   - component: {fileID: 1434739349}
+  - component: {fileID: 1434739350}
   m_Layer: 5
   m_Name: Round
   m_TagString: Untagged
@@ -6373,7 +6374,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1434739345}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 080bedaadf9033949956e80138009af8, type: 3}
+  m_Script: {fileID: 11500000, guid: 72f2e1617751bbb4390737554f0e5d78, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  round: 0
+  isStarting: 0
+  isFinish: 0
+  winner: {fileID: 0}
+  looser: {fileID: 0}
+--- !u!114 &1434739350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434739345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d3d193a03892243b8dbfc6e554eb1d, type: 3}
   m_Name:
   m_EditorClassIdentifier:
 --- !u!20 &1443922911 stripped

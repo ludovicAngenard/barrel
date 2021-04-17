@@ -28,7 +28,7 @@ public class Crouch : MonoBehaviour
         m_OriginalHeight = m_CharacterController.height;
         firstPersonController = player.GetComponent<FirstPersonController>();
 
-        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        GameManager = GameObject.Find("GameManagerTEST").GetComponent<GameManager>();
     }
 
     // Update is called once per frame

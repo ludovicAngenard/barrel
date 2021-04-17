@@ -60,7 +60,7 @@ public class GameControl : MonoBehaviour
                 
             }
 
-            Destroy(GameObject.Find("GameManager"));
+            Destroy(GameObject.Find("GameManagerTEST"));
 
         SceneManager.LoadScene("Menu2");
     }

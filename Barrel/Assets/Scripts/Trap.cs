@@ -21,7 +21,7 @@ public class Trap : MonoBehaviour
 
     void Start()
     {
-    GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    GameManager = GameObject.Find("GameManagerTEST").GetComponent<GameManager>();
     firstPersonController = player.GetComponent<FirstPersonController>();
     TrapCount = 1;
     }

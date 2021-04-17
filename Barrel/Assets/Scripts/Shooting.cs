@@ -29,8 +29,8 @@ public class Shooting : MonoBehaviour
     {
     m_CharacterController = player.GetComponent<CharacterController>();
     firstPersonController = player.GetComponent<FirstPersonController>();
-    GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    GameControl = GameObject.Find("GameManager").GetComponent<GameControl>();
+    GameManager = GameObject.Find("GameManagerTEST").GetComponent<GameManager>();
+    GameControl = GameObject.Find("GameManagerTEST").GetComponent<GameControl>();
     Ammo = 4;
     shoottime = 0.0f;
     reloadtime = 0.0f;
