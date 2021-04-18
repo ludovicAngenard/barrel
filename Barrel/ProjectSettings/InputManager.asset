@@ -7,12 +7,44 @@ InputManager:
   m_Axes:
   - serializedVersion: 3
     m_Name: Player1MoveUpDown
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 3
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 1
+    sensitivity: 5
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Player1Run
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 8
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 1
+    sensitivity: 5
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Player2Run
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 8
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1
     dead: 1
     sensitivity: 5
@@ -23,12 +55,12 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: Player1MoveLeftRight
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 2
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1
     dead: 1
     sensitivity: 5
@@ -39,12 +71,12 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: Player1CameraX
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 5
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0.1
     sensitivity: 0.6
@@ -55,12 +87,12 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: Player1CameraY
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 4
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0.1
     sensitivity: 0.6
@@ -71,12 +103,12 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: Player1Jump
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: joystick button 0
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -87,12 +119,12 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: Player1Shoot
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 9
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0
     sensitivity: 0
@@ -103,12 +135,12 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: Player1Crouch
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: joystick button 1
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0
     sensitivity: 0
@@ -119,12 +151,12 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: Player1Reload
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: joystick button 3
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0
     sensitivity: 0
@@ -135,12 +167,12 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: Player1DropTrap
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: joystick button 2
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0
     sensitivity: 0
@@ -151,12 +183,12 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: Player2MoveUpDown
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 3
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 3
     dead: 0.001
     sensitivity: 3
@@ -167,12 +199,12 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: Player2MoveLeftRight
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 2
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 3
     dead: 0.001
     sensitivity: 3
@@ -183,12 +215,12 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: Player2CameraX
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 5
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0
     sensitivity: 0.1
@@ -199,12 +231,12 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: Player2CameraY
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 4
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0
     sensitivity: 0.1
@@ -215,12 +247,12 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: Player2Jump
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: joystick button 0
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -231,12 +263,12 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: Player2Shoot
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 9
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0
     sensitivity: 0
@@ -247,12 +279,12 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: Player2Crouch
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: joystick button 1
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0
     sensitivity: 0
@@ -263,12 +295,12 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: Player2Reload
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: joystick button 3
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0
     sensitivity: 0
@@ -279,12 +311,12 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: Player2DropTrap
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: joystick button 2
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0
     sensitivity: 0
