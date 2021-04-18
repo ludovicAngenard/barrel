@@ -35,16 +35,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             String MX;
             String MY;
 
-            if(playerNumber != 2){
-                MX = "Mouse X";
-                MY = "Mouse Y";
-            }
-            else
-            {
-                MX = "Mouse X2";
-                MY = "Mouse Y2";
-            }
-
+            MX = "Player"+ playerNumber + "CameraX";
+            MY = "Player"+ playerNumber + "CameraY";
 
         float yRot = CrossPlatformInputManager.GetAxis(MX) * XSensitivity;
             float xRot = CrossPlatformInputManager.GetAxis(MY) * YSensitivity;
