@@ -150,16 +150,13 @@ namespace NamespaceGameManager{
         void FinishScene(){
             SceneManager.LoadScene("finish");
 
-            Debug.Log("winnerX"+winner);
-           Debug.Log("looserX"+looser);
-
             GameObject[] players = {winner, looser};
             foreach (var player in players)
             {
                 player.GetComponent<FirstPersonController>().m_Camera.enabled = false;
                 player.GetComponent<FirstPersonController>().m_WalkSpeed = 0;
                 player.GetComponent<FirstPersonController>().m_Jump = false;
-                 player.GetComponent<FirstPersonController>().m_RunSpeed = 0f;
+                player.GetComponent<FirstPersonController>().m_RunSpeed = 0f;
                 Destroy(player.GetComponent<Crouch>());
                 Destroy(player.GetComponent<Trap>());
 
@@ -171,8 +168,8 @@ namespace NamespaceGameManager{
 
             looser.transform.position = new Vector3(-2.57f, -0.61f, -1.88f);
             winner.transform.position = new Vector3(3.23f, 2.2f, -1.88f);
-            looser.transform.rotation = Quaternion.Euler(0,180,0);
-            winner.transform.rotation = Quaternion.Euler(0,0,0);
+            gameObjectPlayer1.transform.rotation = Quaternion.Euler(0,180,0);
+            gameObjectPlayer2.transform.rotation = Quaternion.Euler(0,0,0);
             Physics.SyncTransforms();
 
             GameObject.Find("FirstPersonCharacter").transform.rotation = Quaternion.Euler(0,0,0);

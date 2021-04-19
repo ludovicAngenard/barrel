@@ -25,7 +25,7 @@ public class BulletScript : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-
+		Debug.Log(collision.gameObject);
 		if (collision.gameObject.tag == "player1" || collision.gameObject.tag == "player2")
     	{
 			GameManager.ResetRound(collision.gameObject.GetComponent<FirstPersonController>());
