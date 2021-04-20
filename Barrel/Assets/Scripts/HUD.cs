@@ -20,16 +20,16 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.name == "Score1")
+        if(gameObject.name == "Score")
         {
             scoreText.text = "Score : " + player.score;
         }
-        if(gameObject.name == "Ammo1")
+        if(gameObject.name == "Ammo")
         {
             ammoText.text = "Ammo : " + Ammo.Ammo+"/4";
         }
 
-        if(gameObject.name == "Trap1")
+        if(gameObject.name == "Trap")
         {
             trapText.text = "Trap : " + player.GetComponent<Trap>().TrapCount+"/1";
         }

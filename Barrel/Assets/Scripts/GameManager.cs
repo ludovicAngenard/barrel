@@ -107,6 +107,8 @@ namespace NamespaceGameManager{
 			round++;
 			Shooting1.Ammo = 4;
 			Shooting2.Ammo = 4;
+            gameObjectPlayer1.GetComponent<Trap>().TrapCount = 1;
+            gameObjectPlayer2.GetComponent<Trap>().TrapCount = 1;
             isFinish = false;
             isStarting = true;
 

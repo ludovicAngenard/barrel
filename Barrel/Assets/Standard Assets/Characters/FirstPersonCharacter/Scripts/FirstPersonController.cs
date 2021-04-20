@@ -119,6 +119,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             if(collision.gameObject.name == "Stuck(Clone)")
             {
+                Debug.Log("WEEEEEEEEEEEEEEEEESH Ca FONCTIoNNE  !");
                 m_WalkSpeed = 0;
                 m_RunSpeed = 0;
                 isTrapped = true;
