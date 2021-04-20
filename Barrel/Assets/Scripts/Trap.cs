@@ -43,7 +43,7 @@ public class Trap : MonoBehaviour
 
     void DropTrap()
     {
-        GameObject tp = Instantiate(theTrap, target, theTrap.transform.rotation);
+        GameObject tp = Instantiate(theTrap, spawnPoint.transform.position, theTrap.transform.rotation);
         TrapCount--;
     }
 

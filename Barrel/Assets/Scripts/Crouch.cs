@@ -34,25 +34,25 @@ public class Crouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.isStarting == true)
+        if(!GameManager.isStarting == true)
         {
-        if(player.name == "FPSController"+firstPersonController.playerNumber)
-        {
-
-            if(Input.GetButtonDown("Player"+firstPersonController.playerNumber+"Crouch"))
+            if(player.name == "FPSController"+firstPersonController.playerNumber)
             {
-                m_Crouch = !m_Crouch;
 
-                CheckCrouch();
+                if(Input.GetButtonDown("Player"+firstPersonController.playerNumber+"Crouch"))
+                {
+                    m_Crouch = !m_Crouch;
+
+                    CheckCrouch();
+                }
+
+                if(Input.GetButtonUp("Player"+firstPersonController.playerNumber+"Crouch"))
+                {
+                    m_Crouch = !m_Crouch;
+
+                    CheckCrouch();
+                }
             }
-
-            if(Input.GetButtonUp("Player"+firstPersonController.playerNumber+"Crouch"))
-            {
-                m_Crouch = !m_Crouch;
-
-                CheckCrouch();
-            }
-        }
         }
 
     }

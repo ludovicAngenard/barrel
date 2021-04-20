@@ -109,6 +109,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                         Destroy(objectC);
                         m_WalkSpeed = 5;
+                        m_RunSpeed = 8;
                         timeRemaining = 5;
                     }
                 }
@@ -119,6 +120,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if(collision.gameObject.name == "Stuck(Clone)")
             {
                 m_WalkSpeed = 0;
+                m_RunSpeed = 0;
                 isTrapped = true;
                 objectC = collision.gameObject;
 
@@ -217,15 +219,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void GetInput(out float speed)
         {
             // Read input
-            float horizontal = CrossPlatformInputManager.GetAxis("Player"+playerNumber+"MoveUpDown");
-            float vertical = CrossPlatformInputManager.GetAxis("Player"+playerNumber+"MoveLeftRight");
+            float horizontal = CrossPlatformInputManager.GetAxis("Player" + playerNumber + "MoveLeftRight");
+            float vertical = CrossPlatformInputManager.GetAxis("Player" + playerNumber + "MoveUpDown");
 
             bool waswalking = m_IsWalking;
 
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
-            m_IsWalking = !CrossPlatformInputManager.GetButton("Player"+playerNumber+"Run");
+            m_IsWalking = !CrossPlatformInputManager.GetButton("Player" + playerNumber + "Run");
 #endif
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
