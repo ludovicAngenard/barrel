@@ -15,7 +15,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public bool m_IsWalking;
         public float m_WalkSpeed;
 
-        [SerializeField] private float m_RunSpeed;
+        [SerializeField] public float m_RunSpeed;
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
         [SerializeField] private float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
@@ -28,29 +28,31 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private LerpControlledBob m_JumpBob = new LerpControlledBob();
         [SerializeField] private float m_StepInterval;
 
-        private FirstPersonController firstPersonController;
         public float timeRemaining = 5;
         public int playerNumber;
-        private Camera m_Camera;
-        private bool m_Jump;
+        public Camera m_Camera;
+        public bool m_Jump;
         private float m_YRotation;
         private Vector2 m_Input;
-        private Vector3 m_MoveDir = Vector3.zero;
+        public Vector3 m_MoveDir = Vector3.zero;
         private CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded;
         private Vector3 m_OriginalCameraPosition;
         private float m_StepCycle;
         private float m_NextStep;
-        private bool m_Jumping;
+        public bool m_Jumping;
         private AudioSource m_AudioSource;
         public int cameraNumber;
-        private bool isTrapped = false;
+        public bool isTrapped = false;
         private GameObject objectC;
         private Vector3 spawnPosition;
         public int score = 0;
 
         // Use this for initialization
+        private void Awake(){
+            DontDestroyOnLoad(this.gameObject);
+        }
         private void Start()
         {
             spawnPosition = transform.position;
@@ -101,14 +103,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     }
                     else
                     {
-                        firstPersonController = GameObject.FindObjectOfType<FirstPersonController>();
-
                         Debug.Log("Time has run out!");
-                        timeRemaining = 0;
+
                         isTrapped = false;
 
                         Destroy(objectC);
                         m_WalkSpeed = 5;
+                        m_RunSpeed = 8;
+                        timeRemaining = 5;
                     }
                 }
         }
@@ -118,6 +120,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if(collision.gameObject.name == "Stuck(Clone)")
             {
                 m_WalkSpeed = 0;
+                m_RunSpeed = 0;
                 isTrapped = true;
                 objectC = collision.gameObject;
 
@@ -216,15 +219,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void GetInput(out float speed)
         {
             // Read input
-            float horizontal = CrossPlatformInputManager.GetAxis("Player"+playerNumber+"MoveUpDown");
-            float vertical = CrossPlatformInputManager.GetAxis("Player"+playerNumber+"MoveLeftRight");
+            float horizontal = CrossPlatformInputManager.GetAxis("Player" + playerNumber + "MoveLeftRight");
+            float vertical = CrossPlatformInputManager.GetAxis("Player" + playerNumber + "MoveUpDown");
 
             bool waswalking = m_IsWalking;
 
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
-            m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
+            m_IsWalking = !CrossPlatformInputManager.GetButton("Player" + playerNumber + "Run");
 #endif
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;

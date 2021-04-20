@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
+namespace NamespaceGameControl{
 public class GameControl : MonoBehaviour
 {
     public static bool gameIsPaused = false;
@@ -12,7 +12,6 @@ public class GameControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -22,7 +21,7 @@ public class GameControl : MonoBehaviour
         {
             if(gameIsPaused)
             {
-                ResumeGame();  
+                ResumeGame();
             }
             else
             {
@@ -34,11 +33,11 @@ public class GameControl : MonoBehaviour
 
     public void ResumeGame()
     {
-        
+
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
-        
+
     }
 
     public void PauseGame ()
@@ -51,9 +50,20 @@ public class GameControl : MonoBehaviour
     public void QuitGame()
     {
         ResumeGame();
+        GameObject[] players = {GameObject.Find("FPSController1"), GameObject.Find("FPSController2")};
+            foreach (var player in players)
+            {
+                Destroy(player);
+
+
+            }
+
+            Destroy(GameObject.Find("GameManager"));
+
         SceneManager.LoadScene("Menu2");
     }
 
-    
 
+
+}
 }

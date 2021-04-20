@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
+using NamespaceGameManager;
+using NamespaceGameControl;
 
 public class Shooting : MonoBehaviour
 {
@@ -15,6 +17,10 @@ public class Shooting : MonoBehaviour
     public float reloadtime;
     public float shoottime;
     private FirstPersonController firstPersonController;
+    private GameManager GameManager;
+    public Camera fpsCam;
+    public float range = 100f;
+    private GameControl GameControl;
 
 
 
@@ -23,6 +29,8 @@ public class Shooting : MonoBehaviour
     {
     m_CharacterController = player.GetComponent<CharacterController>();
     firstPersonController = player.GetComponent<FirstPersonController>();
+    GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    GameControl = GameObject.Find("GameManager").GetComponent<GameControl>();
     Ammo = 4;
     shoottime = 0.0f;
     reloadtime = 0.0f;
@@ -34,8 +42,11 @@ public class Shooting : MonoBehaviour
     {
         UpdateShootTime();
         UpdateReloadTime();
+        if(!GameControl.gameIsPaused && !GameManager.isStarting)
+       {
 
-        if(player.name == "FPSController"+firstPersonController.playerNumber)
+
+        if(player.name == "FPSController"+firstPersonController.playerNumber && !GameManager.isFinish)
         {
 
             if(Input.GetButtonDown("Player"+firstPersonController.playerNumber+"Shoot"))
@@ -50,6 +61,7 @@ public class Shooting : MonoBehaviour
 
         }
 
+    }
     }
     void UpdateShootTime(){
         if ( shoottime > 0.0f)
@@ -97,8 +109,13 @@ public class Shooting : MonoBehaviour
 
     private void ShootBullet()
     {
-        GameObject cB = Instantiate(bullet, spawnPoint.position, bullet.transform.rotation);
-        Rigidbody rig = cB.GetComponent<Rigidbody>();
+        RaycastHit hit;
+        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)){
+        Debug.Log(hit.transform.name);
+        }
+       GameObject impact = Instantiate(bullet, hit.point, Quaternion.LookRotation(hit.normal));
+
+       Rigidbody rig = impact.GetComponent<Rigidbody>();
 
         rig.AddForce(spawnPoint.forward * bulletSpeed, ForceMode.Impulse);
     }
