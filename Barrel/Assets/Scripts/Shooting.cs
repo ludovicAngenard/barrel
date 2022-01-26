@@ -11,7 +11,7 @@ public class Shooting : MonoBehaviour
     public Transform spawnPoint;
     public GameObject bullet;
     public float bulletSpeed = 5f;
-    public int Ammo;
+    public int Ammo; 
     public GameObject player;
     private CharacterController m_CharacterController;
     public float reloadtime;
