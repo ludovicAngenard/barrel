@@ -7,15 +7,23 @@ public class InputManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] Movement movement;
+    [SerializeField] MouseLook mouseLook;
     PlayerController controls;
     PlayerController.GroundMovementActions groundMovement;
     Vector2 horizontalInput;
+    Vector2 mouseInput;
 
     private void Awake ()
     {
         controls = new PlayerController();
         groundMovement = controls.GroundMovement;
-        groundMovement.HorizontalMovement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
+        groundMovement.Move.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
+
+        groundMovement.Jump.performed += _ => movement.OnJumpPressed();
+        groundMovement.Crouch.performed += _ => movement.OnCrouchPressed();
+
+        groundMovement.JoystickX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
+        groundMovement.JoystickY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
     }
 
     private void OnEnable() {
@@ -30,6 +38,7 @@ public class InputManager : MonoBehaviour
     void Update()
     {
         movement.ReceiveInput(horizontalInput);
+        mouseLook.ReceiveInput(mouseInput);
 
     }
 }
