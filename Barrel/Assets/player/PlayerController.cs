@@ -57,6 +57,14 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""d5134b76-4343-43f8-b135-9dfb45b34ff5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -114,6 +122,17 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""89d7375a-2718-41b7-aa61-94fd762ff40f"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -127,6 +146,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         m_GroundMovement_JoystickX = m_GroundMovement.FindAction("JoystickX", throwIfNotFound: true);
         m_GroundMovement_JoystickY = m_GroundMovement.FindAction("JoystickY", throwIfNotFound: true);
         m_GroundMovement_Crouch = m_GroundMovement.FindAction("Crouch", throwIfNotFound: true);
+        m_GroundMovement_Run = m_GroundMovement.FindAction("Run", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -181,6 +201,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
     private readonly InputAction m_GroundMovement_JoystickX;
     private readonly InputAction m_GroundMovement_JoystickY;
     private readonly InputAction m_GroundMovement_Crouch;
+    private readonly InputAction m_GroundMovement_Run;
     public struct GroundMovementActions
     {
         private @PlayerController m_Wrapper;
@@ -190,6 +211,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         public InputAction @JoystickX => m_Wrapper.m_GroundMovement_JoystickX;
         public InputAction @JoystickY => m_Wrapper.m_GroundMovement_JoystickY;
         public InputAction @Crouch => m_Wrapper.m_GroundMovement_Crouch;
+        public InputAction @Run => m_Wrapper.m_GroundMovement_Run;
         public InputActionMap Get() { return m_Wrapper.m_GroundMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -214,6 +236,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Crouch.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnCrouch;
                 @Crouch.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnCrouch;
                 @Crouch.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnCrouch;
+                @Run.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRun;
+                @Run.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRun;
+                @Run.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRun;
             }
             m_Wrapper.m_GroundMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -233,6 +258,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Crouch.started += instance.OnCrouch;
                 @Crouch.performed += instance.OnCrouch;
                 @Crouch.canceled += instance.OnCrouch;
+                @Run.started += instance.OnRun;
+                @Run.performed += instance.OnRun;
+                @Run.canceled += instance.OnRun;
             }
         }
     }
@@ -244,5 +272,6 @@ public class @PlayerController : IInputActionCollection, IDisposable
         void OnJoystickX(InputAction.CallbackContext context);
         void OnJoystickY(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
     }
 }

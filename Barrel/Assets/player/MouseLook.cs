@@ -7,6 +7,7 @@ public class MouseLook : MonoBehaviour
     [SerializeField] float sensitivityX = 8f;
     [SerializeField] float sensitivityY = 8f;
     [SerializeField] Transform playerCamera;
+    [SerializeField] Transform playerController;
     [SerializeField] float xClamp = 85f;
     float xRotation = 0f;
     float yRotation = 0f;
@@ -22,13 +23,23 @@ public class MouseLook : MonoBehaviour
     {
         transform.Rotate(Vector3.up, mouseX * Time.deltaTime);
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -xClamp, xClamp);
+        xRotation -= mouseY * 1.5f;
+        xRotation = Mathf.Clamp(xRotation, -xClamp, xClamp); //bloquer l'angle à un maximum et un mini
+        yRotation += mouseX / 9f;
 
-        Vector3 targetRotation = transform.eulerAngles;
+        Vector3 targetRotationX = transform.eulerAngles;
+        Vector3 targetRotationY = transform.eulerAngles;
 
-        targetRotation.x = xRotation;
-        playerCamera.eulerAngles = targetRotation;
+        targetRotationX.x = xRotation;
+        targetRotationY.y = yRotation;
+
+        playerController.eulerAngles = targetRotationY;
+        playerCamera.eulerAngles = targetRotationX;
+
+
+
+
+
     }
 
     public void ReceiveInput (Vector2 mouseInput){

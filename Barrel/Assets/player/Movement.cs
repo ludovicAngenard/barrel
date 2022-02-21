@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     [SerializeField] float gravity = -30f;
     Vector3 verticalVelocity = Vector3.zero;
     [SerializeField] LayerMask groundMask;
-    bool isGrounded;
+    bool isGrounded, isRunning;
 
     public void ReceiveInput (Vector2 horizontalInput){
         this.horizontalInput = horizontalInput;
@@ -41,15 +41,6 @@ public class Movement : MonoBehaviour
             }
             jump = false;
         }
-        //  if (crouch){
-        //     if (isGrounded){
-        //         Debug.Log(controller.height);
-        //         controller.height = 0.75f;
-        //         Debug.Log(controller.height);
-        //     }
-        //     crouch = false;
-        //     controller.height = 1.5f;
-        // }
 
         verticalVelocity.y += gravity * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
@@ -62,5 +53,13 @@ public class Movement : MonoBehaviour
 
     public void OnCrouchPressed(){
         crouch = true;
+    }
+    public void OnRunPressed(){
+        speed = 22f;
+        isRunning = true;
+    }
+    public void OnRunNotPressed(){
+        speed = 11f;
+        isRunning = false;
     }
 }
