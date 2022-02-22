@@ -24,14 +24,14 @@ public class CameraFollow : MonoBehaviour
     /// <summary>
     /// </summary>
     // Start is called before the first frame update
-    
+
     // Update is called once per frame
     private void LateUpdate()
     {
         Vector3 desiredPosition = target.position + offset;
 
         transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
-        
+
     }
 
     public void CenterOnTarget(){
