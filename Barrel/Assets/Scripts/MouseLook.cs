@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MouseLook : MonoBehaviour
 {
@@ -12,10 +13,10 @@ public class MouseLook : MonoBehaviour
     float xRotation = 0f;
     float yRotation = 0f;
     float mouseX, mouseY;
+    private CharacterController controller;
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -37,14 +38,21 @@ public class MouseLook : MonoBehaviour
         playerCamera.eulerAngles = targetRotationX;
 
     }
-    public void MouseX(InputAction.CallbackContext context)
+    // public void MouseX(InputAction.CallbackContext context)
+    // {
+    //    // jumped = context.ReadValue<bool>();
+    //     groundMovement.JoystickX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
+    //     groundMovement.JoystickY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
+    // }
+    public void OnJoystickXMove(InputAction.CallbackContext context)
     {
-       // jumped = context.ReadValue<bool>();
-        mouseX = context.action.triggered;
-    }
-    public void MouseY(InputAction.CallbackContext context)
-    {
-        mouseY = context.ReadValue<Vector2>();
+        Debug.Log("joystick x");
+        mouseX = context.ReadValue<float>();
 
+    }
+    public void OnJoystickYMove(InputAction.CallbackContext context)
+    {
+        Debug.Log("joystick y");
+        mouseY = context.ReadValue<float>();
     }
 }
