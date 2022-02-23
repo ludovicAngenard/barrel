@@ -145,7 +145,7 @@
                 {
                     "name": "",
                     "id": "ef45e878-09bf-43be-a95e-e077a2cadffb",
-                    "path": "<Gamepad>/leftStickPress",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller1",

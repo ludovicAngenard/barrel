@@ -4,7 +4,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float playerSpeed = 2.0f;
+    [SerializeField] private float playerSpeed = 3.0f;
+    private float sprintSpeed = 8.0f;
+    private float walkSpeed = 3.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
     private CharacterController controller;
@@ -23,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private bool jumped = false;
 
     private bool crouch = false;
+
+    private bool sprint = false;
 
 
 
@@ -47,10 +51,7 @@ public class PlayerController : MonoBehaviour
         jumped = context.action.triggered;
     }
 
-    public void OnSprint(InputAction.CallbackContext context)
-    {
-
-    }
+    
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
@@ -60,6 +61,14 @@ public class PlayerController : MonoBehaviour
         CheckCrouch();
 
 
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        sprint = context.action.triggered;
+        Debug.Log(sprint);
+        Debug.Log("------------");
+        CheckSprint();
     }
 
 
@@ -106,17 +115,18 @@ public class PlayerController : MonoBehaviour
             controller.height = standingHeight;
         }
     }
-    // private void Crouching(){
-    //     if (isCrouching && crouch && groundedPlayer)
-    //     {
-    //         controller.height = standingHeight;
-    //         isCrouching = false;
-    //     }
-    //     else if (!isCrouching && crouch && groundedPlayer)
-    //     {
-    //         controller.height /= 2;
-    //         isCrouching = true;
-    //
-    //     }
-    // }
+
+
+    void CheckSprint()
+    {
+        if (sprint)
+        {
+            playerSpeed = sprintSpeed;
+        }
+        else
+        {
+            playerSpeed = walkSpeed;
+        }
+    }
+    
 }
