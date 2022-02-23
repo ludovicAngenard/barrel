@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         jumped = context.action.triggered;
     }
 
-    
+
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
@@ -80,13 +80,8 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
-        controller.Move(move * Time.deltaTime * playerSpeed);
-
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
-        }
+        Vector3 horizontalVelocity = (transform.right * movementInput.x + transform.forward * movementInput.y) * playerSpeed;
+        controller.Move(horizontalVelocity * Time.deltaTime);
 
         // Changes the height position of the player..
         if (jumped && groundedPlayer)
@@ -95,12 +90,12 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        
+
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
-        
+
     }
 
 
@@ -128,5 +123,5 @@ public class PlayerController : MonoBehaviour
             playerSpeed = walkSpeed;
         }
     }
-    
+
 }

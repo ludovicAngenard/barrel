@@ -5,8 +5,7 @@ using UnityEngine.InputSystem;
 
 public class MouseLook : MonoBehaviour
 {
-    [SerializeField] float sensitivityX = 8f;
-    [SerializeField] float sensitivityY = 8f;
+    [SerializeField] float sensitivity = 1.2f;
     [SerializeField] Transform playerCamera;
     [SerializeField] Transform playerController;
     [SerializeField] float xClamp = 85f;
@@ -26,7 +25,7 @@ public class MouseLook : MonoBehaviour
 
         xRotation -= mouseY * 1.5f;
         xRotation = Mathf.Clamp(xRotation, -xClamp, xClamp); //bloquer l'angle à un maximum et un mini
-        yRotation += mouseX / 9f;
+        yRotation += mouseX ;
 
         Vector3 targetRotationX = transform.eulerAngles;
         Vector3 targetRotationY = transform.eulerAngles;
@@ -46,13 +45,11 @@ public class MouseLook : MonoBehaviour
     // }
     public void OnJoystickXMove(InputAction.CallbackContext context)
     {
-        Debug.Log("joystick x");
-        mouseX = context.ReadValue<float>();
+        mouseX = context.ReadValue<float>() * sensitivity;
 
     }
     public void OnJoystickYMove(InputAction.CallbackContext context)
     {
-        Debug.Log("joystick y");
-        mouseY = context.ReadValue<float>();
+        mouseY = context.ReadValue<float>() * sensitivity;
     }
 }
