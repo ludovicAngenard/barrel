@@ -11,13 +11,28 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     private bool groundedPlayer;
 
+    private float crouchHeight = 0.5f;
+    private float standingHeight;
+    //private float timeToCrouch = 0.25f;
+    //private Vector3 crouchingCenter = new Vector3(0, 0.5f, 0);
+    //private Vector3 standingCenter = new Vector3(0, 0, 0);
+    private bool isCrouching;
+    //private bool duringCrouchAnimation;
+
     private Vector2 movementInput = Vector2.zero;
     private bool jumped = false;
+
+    private bool crouch = false;
+
+
+
 
 
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
+        standingHeight = controller.height;
+
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -28,19 +43,26 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-       // jumped = context.ReadValue<bool>();
+        // jumped = context.ReadValue<bool>();
         jumped = context.action.triggered;
     }
 
-    public void OnSprint(InputAction.CallbackContext context){
+    public void OnSprint(InputAction.CallbackContext context)
+    {
 
     }
 
-    //public void OnCrouch(InputAction.CallbackContext context){
-    //    if (ShouldCrouch)
-    //    StartCoroutine(CrouchStand());
-//
-    //}
+    public void OnCrouch(InputAction.CallbackContext context)
+    {
+        crouch = context.action.triggered;
+
+
+        CheckCrouch();
+
+
+    }
+
+
     void Update()
     {
         groundedPlayer = controller.isGrounded;
@@ -63,7 +85,38 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
 
+
+        
+
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+        
     }
+
+
+    void CheckCrouch()
+    {
+        if (crouch == true)
+        {
+            controller.height = crouchHeight;
+        }
+        else
+        {
+            controller.height = standingHeight;
+        }
+    }
+    // private void Crouching(){
+    //     if (isCrouching && crouch && groundedPlayer)
+    //     {
+    //         controller.height = standingHeight;
+    //         isCrouching = false;
+    //     }
+    //     else if (!isCrouching && crouch && groundedPlayer)
+    //     {
+    //         controller.height /= 2;
+    //         isCrouching = true;
+    //
+    //     }
+    // }
 }

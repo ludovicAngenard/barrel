@@ -144,11 +144,33 @@
                 },
                 {
                     "name": "",
+                    "id": "ef45e878-09bf-43be-a95e-e077a2cadffb",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller1",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "266b35de-f23d-4ec2-bdb1-2e3372aa7279",
                     "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa82ffab-dabd-410e-a9bc-9d1ea40fb401",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller1",
                     "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
