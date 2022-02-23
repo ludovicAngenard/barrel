@@ -40,6 +40,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "JoystickX",
+                    "type": "PassThrough",
+                    "id": "feff157a-ee31-4fe0-9763-a3f5c35c2e76",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "JoystickY",
+                    "type": "PassThrough",
+                    "id": "b0fb7fa9-9b32-4750-8cd5-25a0f9cc292f",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -172,6 +190,28 @@
                     "processors": "",
                     "groups": "Controller1",
                     "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23e5ffb1-0b87-4e37-8504-99fa436194ac",
+                    "path": "<Gamepad>/rightStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller1",
+                    "action": "JoystickX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f95e6fd-1b66-4fb1-8608-401f20c60b90",
+                    "path": "<Gamepad>/rightStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller1",
+                    "action": "JoystickY",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

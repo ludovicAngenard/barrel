@@ -4,9 +4,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float playerSpeed = 3.0f;
-    private float sprintSpeed = 8.0f;
-    private float walkSpeed = 3.0f;
+    [SerializeField] private float playerSpeed = 2.0f;
+    private float sprintSpeed = 4.0f;
+    private float walkSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
     private CharacterController controller;
@@ -80,13 +80,16 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        Vector3 horizontalVelocity = (transform.right * movementInput.x + transform.forward * movementInput.y) * playerSpeed;
+        controller.Move(horizontalVelocity * Time.deltaTime);
 
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
-        }
+      // Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
+      // controller.Move(move * Time.deltaTime * playerSpeed);
+
+        //if (move != Vector3.zero)
+       // {
+       //     gameObject.transform.forward = move;
+       // }
 
         // Changes the height position of the player..
         if (jumped && groundedPlayer)

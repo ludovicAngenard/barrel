@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
     private float smoothSpeed = 0.125f;
 
     [SerializeField, Tooltip("Camera offset from the transform target")]
-    private Vector3 offset = new Vector3(0f, 2.25f, -1.5f);
+    private Vector3 offset = new Vector3(0f, 1f, 0f);
 
     // Necessary for Smooth Damp function
     private Vector3 velocity = Vector3.zero;
