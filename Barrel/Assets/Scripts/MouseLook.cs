@@ -46,13 +46,11 @@ public class MouseLook : MonoBehaviour
     // }
     public void OnJoystickXMove(InputAction.CallbackContext context)
     {
-        Debug.Log("joystick x");
         mouseX = context.ReadValue<float>() * sensitivityY;
 
     }
     public void OnJoystickYMove(InputAction.CallbackContext context)
     {
-        Debug.Log("joystick y");
         mouseY = context.ReadValue<float>();
     }
 }

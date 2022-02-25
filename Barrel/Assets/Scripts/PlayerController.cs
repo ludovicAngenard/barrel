@@ -92,7 +92,6 @@ public class PlayerController : MonoBehaviour
         if (crouch)
         {
             playerScale.y = crouchHeight;
-            aboveObstacle = true;
         }
         else
         {
@@ -101,6 +100,9 @@ public class PlayerController : MonoBehaviour
             if (!Physics.Raycast(ray, 2))
             {
                 playerScale.y = standingHeight;
+                aboveObstacle = false;
+
+            } else{
                 aboveObstacle = true;
                 Debug.Log("ca touche");
             }
