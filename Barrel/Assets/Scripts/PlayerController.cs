@@ -20,11 +20,11 @@ public class PlayerController : MonoBehaviour
 
     private float crouchHeight = 1f;
     private float standingHeight;
-    private bool isCrouching;
     private Vector2 movementInput = Vector2.zero;
     private bool jumped = false;
 
     private bool crouch = false;
+    private bool aboveObstacle = false;
 
     private bool sprint = false;
     [SerializeField] private GameObject playerObject;
@@ -79,6 +79,10 @@ public class PlayerController : MonoBehaviour
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+        if (aboveObstacle){
+            CheckCrouch();
+        }
     }
 
     void CheckCrouch()
@@ -88,10 +92,20 @@ public class PlayerController : MonoBehaviour
         if (crouch)
         {
             playerScale.y = crouchHeight;
+            aboveObstacle = true;
         }
         else
         {
-           playerScale.y = standingHeight;
+
+            Ray ray = new Ray(transform.position, transform.up);
+            if (!Physics.Raycast(ray, 2))
+            {
+                playerScale.y = standingHeight;
+                aboveObstacle = true;
+                Debug.Log("ca touche");
+            }
+
+
         }
         transform.localScale = playerScale;
     }
