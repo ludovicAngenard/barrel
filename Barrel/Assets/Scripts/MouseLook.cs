@@ -38,12 +38,7 @@ public class MouseLook : MonoBehaviour
         playerCamera.eulerAngles = targetRotationX;
 
     }
-    // public void MouseX(InputAction.CallbackContext context)
-    // {
-    //    // jumped = context.ReadValue<bool>();
-    //     groundMovement.JoystickX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
-    //     groundMovement.JoystickY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
-    // }
+    
     public void OnJoystickXMove(InputAction.CallbackContext context)
     {
         mouseX = context.ReadValue<float>() * sensitivityY;
