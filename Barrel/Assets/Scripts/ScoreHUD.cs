@@ -1,18 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using player;
+using player_controller;
 using UnityEngine.UI;
 
 public class ScoreHUD : MonoBehaviour
 {
     Text scoreText;
-    private Player player1, player2;
+    private PlayerController player1, player2;
     // Start is called before the first frame update
     void Start()
     {
-        player1 = GameObject.Find("PlayerParent").GetComponent<Player>();
-		player2 = GameObject.Find("PlayerParent2").GetComponent<Player>();
+        player1 = GameObject.Find("PlayerParent").GetComponent<PlayerController>();
+		player2 = GameObject.Find("PlayerParent2").GetComponent<PlayerController>();
         scoreText = GetComponent<Text>();
     }
     // Update is called once per frame
