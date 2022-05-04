@@ -9,11 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu2.unity
     guid: e4c76762dbf50c94585389e467876ab7
   - enabled: 1
+    path: Assets/Scenes/fpsControllerScene.unity
+    guid: 17e0cf33bba648e498519cecb30e438d
+  - enabled: 1
     path: Assets/Scenes/Map Barrel Town.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/finish.unity
     guid: 9e409158d1833b84e9fe650df837a4bf
+  - enabled: 1
+    path: Assets/Scenes/CharacterSelection.unity
+    guid: 0d6f9f7c677fc495ebf93bc79ebd5fb2
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 636423be7b756ff4899816d5d86be2df,
       type: 2}

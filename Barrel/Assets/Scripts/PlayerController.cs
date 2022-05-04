@@ -8,7 +8,9 @@ public class PlayerController : MonoBehaviour
 {
 
 
-    [SerializeField] private float playerSpeed = 2.0f;
+    [SerializeField] private float playerSpeed = 3.0f;
+    [SerializeField] private float crouchSpeed = 0.3f;
+    //[SerializeField] private float timeToCrouch = 0.25f;
     private float sprintSpeed = 8.0f;
     private float walkSpeed = 4.0f;
     [SerializeField] private float jumpHeight = 1.0f;
@@ -52,6 +54,7 @@ public class PlayerController : MonoBehaviour
     public void OnCrouch(InputAction.CallbackContext context)
     {
         crouch = context.action.triggered;
+        
         CheckCrouch();
     }
 
@@ -60,6 +63,12 @@ public class PlayerController : MonoBehaviour
         sprint = context.action.triggered;
         CheckSprint();
     }
+
+   // void OnValidMenu(InputAction.CallbackContext context)
+   // {
+   //     validMenu = context.action.triggered;
+   //     CheckValidMenu();
+   // }
     void Update()
     {
 
@@ -80,18 +89,30 @@ public class PlayerController : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
-        if (aboveObstacle){
+        if (aboveObstacle)
+        {
             CheckCrouch();
         }
     }
 
+  // void CheckValidMenu()
+  // {
+  //     if()
+  //     {
+  //         SceneManager.LoadScene("Map Barrel Town");
+  //     }
+  // }
+
     void CheckCrouch()
     {
         Vector3 playerScale = transform.localScale;
+       
+
 
         if (crouch)
         {
-            playerScale.y = crouchHeight;
+            playerScale.y = crouchHeight ;
+
         }
         else
         {
@@ -102,13 +123,16 @@ public class PlayerController : MonoBehaviour
                 playerScale.y = standingHeight;
                 aboveObstacle = false;
 
-            } else{
+            }
+            else
+            {
                 aboveObstacle = true;
                 Debug.Log("ca touche");
             }
 
 
         }
+
         transform.localScale = playerScale;
     }
 
