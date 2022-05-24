@@ -592,6 +592,11 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[7].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1317040673269432253, guid: 036f61bfbecfabb4dae0522f025adcab,
+        type: 3}
+      propertyPath: offset.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1317040674659777092, guid: 036f61bfbecfabb4dae0522f025adcab,
         type: 3}
       propertyPath: m_Name
@@ -1463,18 +1468,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6521066116561444509, guid: afa68a7a2fcf02f478121569ea7c812c, type: 3}
---- !u!114 &403453382 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 287441673559003766, guid: 036f61bfbecfabb4dae0522f025adcab,
-    type: 3}
-  m_PrefabInstance: {fileID: 119177211}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e23f2ef1ff7ecc41abfd6f40d6ad7ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &442661320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5447,18 +5440,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5865666013547949723, guid: c41fc02bcad0a354fbd3ec356d9baa4a, type: 3}
---- !u!114 &1628272356 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 287441673559003766, guid: 036f61bfbecfabb4dae0522f025adcab,
-    type: 3}
-  m_PrefabInstance: {fileID: 1216615703}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e23f2ef1ff7ecc41abfd6f40d6ad7ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1633187960 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -208595431880416365, guid: 6798551f12d7fe449ae1f9c743015f5d,
@@ -5490,22 +5471,22 @@ PrefabInstance:
         type: 3}
       propertyPath: Ammo
       value: 
-      objectReference: {fileID: 403453382}
+      objectReference: {fileID: 0}
     - target: {fileID: 1116303662471940437, guid: 0675a552ef99c0e4892a603ba21fc98a,
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 2026611760}
+      objectReference: {fileID: 0}
     - target: {fileID: 1250178470588883382, guid: 0675a552ef99c0e4892a603ba21fc98a,
         type: 3}
       propertyPath: Ammo
       value: 
-      objectReference: {fileID: 1628272356}
+      objectReference: {fileID: 0}
     - target: {fileID: 1250178470588883382, guid: 0675a552ef99c0e4892a603ba21fc98a,
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 106474453}
+      objectReference: {fileID: 0}
     - target: {fileID: 2836602732429995177, guid: 0675a552ef99c0e4892a603ba21fc98a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5530,22 +5511,22 @@ PrefabInstance:
         type: 3}
       propertyPath: Ammo
       value: 
-      objectReference: {fileID: 403453382}
+      objectReference: {fileID: 0}
     - target: {fileID: 3039343317976798919, guid: 0675a552ef99c0e4892a603ba21fc98a,
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 2026611760}
+      objectReference: {fileID: 0}
     - target: {fileID: 5068097135812047564, guid: 0675a552ef99c0e4892a603ba21fc98a,
         type: 3}
       propertyPath: Ammo
       value: 
-      objectReference: {fileID: 1628272356}
+      objectReference: {fileID: 0}
     - target: {fileID: 5068097135812047564, guid: 0675a552ef99c0e4892a603ba21fc98a,
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 106474453}
+      objectReference: {fileID: 0}
     - target: {fileID: 5872662524595768143, guid: 0675a552ef99c0e4892a603ba21fc98a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5580,22 +5561,22 @@ PrefabInstance:
         type: 3}
       propertyPath: Ammo
       value: 
-      objectReference: {fileID: 1628272356}
+      objectReference: {fileID: 0}
     - target: {fileID: 7974239510634418648, guid: 0675a552ef99c0e4892a603ba21fc98a,
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 106474453}
+      objectReference: {fileID: 0}
     - target: {fileID: 9033811370180805591, guid: 0675a552ef99c0e4892a603ba21fc98a,
         type: 3}
       propertyPath: Ammo
       value: 
-      objectReference: {fileID: 403453382}
+      objectReference: {fileID: 0}
     - target: {fileID: 9033811370180805591, guid: 0675a552ef99c0e4892a603ba21fc98a,
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 2026611760}
+      objectReference: {fileID: 0}
     - target: {fileID: 9163422415369675477, guid: 0675a552ef99c0e4892a603ba21fc98a,
         type: 3}
       propertyPath: m_Name
@@ -6465,6 +6446,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999551417}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2005336582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3932011819359064352, guid: 036f61bfbecfabb4dae0522f025adcab,
+    type: 3}
+  m_PrefabInstance: {fileID: 119177211}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2005336585
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005336582}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1001 &2007027619
 PrefabInstance:
   m_ObjectHideFlags: 0
