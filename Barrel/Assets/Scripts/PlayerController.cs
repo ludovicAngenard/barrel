@@ -24,6 +24,7 @@ namespace player_controller {
         private bool crouch;
         private bool aboveObstacle;
         private bool sprint;
+        private bool reload;
         [SerializeField] private GameObject playerObject;
 
 
@@ -46,14 +47,14 @@ namespace player_controller {
         public void OnShoot(InputAction.CallbackContext context)
         {
             shoot = context.action.triggered;
-
-
+        }
+        public void OnReload(InputAction.CallbackContext context)
+        {
+            reload = context.action.triggered;
         }
         public void OnMove(InputAction.CallbackContext context)
         {
             movementInput = context.ReadValue<Vector2>();
-
-
         }
 
         public void OnJump(InputAction.CallbackContext context)
@@ -116,7 +117,6 @@ namespace player_controller {
 
                 } else{
                     aboveObstacle = true;
-                    Debug.Log("ca touche");
                 }
 
 
@@ -143,7 +143,13 @@ namespace player_controller {
         }
         public int getScore(){
                 return this.score;
-            }
+        }
+        public bool getShoot(){
+            return this.shoot;
+        }
+        public bool getReload(){
+            return this.reload;
+        }
         public void setScore(int score){
             this.score = score;
         }

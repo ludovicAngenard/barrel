@@ -15,9 +15,10 @@ public class Shooting : MonoBehaviour
     private CharacterController m_CharacterController;
     public float reloadtime;
     public float shoottime;
-    private PlayerController player;
+    public PlayerController player;
     private GameManager GameManager;
     public Camera fpsCam;
+    public LineRenderer bulletTrail;
     public float range = 100f;
 
 
@@ -26,7 +27,6 @@ public class Shooting : MonoBehaviour
     void Start()
     {
     m_CharacterController = playerObject.GetComponent<CharacterController>();
-    player = GameObject.Find("Player").GetComponent<PlayerController>();
     GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     Ammo = 4;
     shoottime = 0.0f;
@@ -39,22 +39,19 @@ public class Shooting : MonoBehaviour
     {
         UpdateShootTime();
         UpdateReloadTime();
-        if(!GameManager.isStarting)
-       {
+        if(!GameManager.isStarting){
             if(playerObject.name == "PlayerParent"+player.getPlayerNumber() && !GameManager.isFinish)
             {
 
                 //TODO SHOOT WITH NEW INPUT
 
-                // if(Input.GetButtonDown("Player"+player.getPlayerNumber()+"Shoot"))
-                // {
-                //     CheckBullet();
-                // }
+                if(player.getShoot()){
+                    CheckBullet();
+                }
 
-                // if(Input.GetButtonDown("Player"+player.getPlayerNumber()+"Reload") && reloadtime <= 0)
-                // {
-                //     Reload();
-                // }
+                if(player.getReload() && reloadtime <= 0){
+                    Reload();
+                }
 
             }
         }
