@@ -99,6 +99,13 @@ public class Shooting : MonoBehaviour
         Ammo = 4;
         reloadtime = 4;
     }
+    private void SpawnBulletTrails(Vector3 hitpoint){
+        GameObject bulletTrailEffect = Instantiate(bulletTrail.gameObject, spawnPoint.position, Quaternion.identity);
+        LineRenderer lineR = bulletTrailEffect.GetComponent<LineRenderer>();
+        lineR.SetPosition(0, spawnPoint.position);
+        lineR.SetPosition(1, hitpoint);
+        Destroy(bulletTrailEffect, 2f);
+    }
 
     private void ShootBullet()
     {
@@ -106,6 +113,7 @@ public class Shooting : MonoBehaviour
 
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)){
             Debug.Log(hit.transform.name);
+            SpawnBulletTrails(hit.point);
         }
         GameObject impact = Instantiate(bullet, hit.point, Quaternion.LookRotation(hit.normal));
 
