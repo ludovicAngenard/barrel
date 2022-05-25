@@ -12,7 +12,6 @@ public class Shooting : MonoBehaviour
     public float bulletSpeed = 5f;
     public int Ammo;
     public GameObject playerObject;
-    private CharacterController m_CharacterController;
     public float reloadtime;
     public float shoottime;
     public PlayerController player;
@@ -26,7 +25,6 @@ public class Shooting : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-    m_CharacterController = playerObject.GetComponent<CharacterController>();
     GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     Ammo = 4;
     shoottime = 0.0f;
@@ -113,7 +111,7 @@ public class Shooting : MonoBehaviour
 
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)){
             Debug.Log(hit.transform.name);
-            SpawnBulletTrails(hit.point);
+            //SpawnBulletTrails(hit.point);
         }
         GameObject impact = Instantiate(bullet, hit.point, Quaternion.LookRotation(hit.normal));
 

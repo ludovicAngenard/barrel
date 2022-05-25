@@ -48,8 +48,6 @@ namespace NamespaceGameManager{
                         Win();
                     }
                 } else {
-
-                    PlayersImmobility();
                     countDown();
                     if (timeLeft > 0){
                         scoreText.UpdateScoreText(timeLeft.ToString("0"));
@@ -98,8 +96,8 @@ namespace NamespaceGameManager{
 			round++;
 			Shooting1.Ammo = 4;
 			Shooting2.Ammo = 4;
-            gameObjectPlayer1.GetComponent<Trap>().TrapCount = 1;
-            gameObjectPlayer2.GetComponent<Trap>().TrapCount = 1;
+            //player1.GetComponent<Trap>().TrapCount = 1;
+            //player2.GetComponent<Trap>().TrapCount = 1;
             isFinish = false;
             isStarting = true;
 
@@ -123,11 +121,7 @@ namespace NamespaceGameManager{
         {
             return looser;
         }
-        public void PlayersImmobility(){
-            player1.jumped = false;
-            player2.jumped = false;
-            player1.setPlayerSpeed(0);
-        }
+
         public void countDown(){
             if (timeLeft >= 0){
                 timeLeft -= Time.deltaTime;

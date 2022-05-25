@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/fpsControllerScene.unity
     guid: 17e0cf33bba648e498519cecb30e438d
   - enabled: 1
-    path: Assets/Scenes/Map Barrel Town.unity
+    path: Assets/Scenes/Map Barrel Town2.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/finish.unity

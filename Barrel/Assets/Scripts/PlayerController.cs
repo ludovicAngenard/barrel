@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using NamespaceGameManager;
 //using cowboy;
 namespace player_controller {
 
@@ -25,6 +26,7 @@ namespace player_controller {
         private bool aboveObstacle;
         private bool sprint;
         private bool reload;
+        private GameManager gameManager;
         [SerializeField] private GameObject playerObject;
 
 
@@ -32,6 +34,7 @@ namespace player_controller {
         {
             controller = gameObject.GetComponent<CharacterController>();
             standingHeight = controller.height;
+            gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
             if (transform.parent.gameObject.name == "PlayerParent1"){
                 this.playerNumber = 1;
@@ -47,6 +50,7 @@ namespace player_controller {
         public void OnShoot(InputAction.CallbackContext context)
         {
             shoot = context.action.triggered;
+
         }
         public void OnReload(InputAction.CallbackContext context)
         {
@@ -54,7 +58,15 @@ namespace player_controller {
         }
         public void OnMove(InputAction.CallbackContext context)
         {
-            movementInput = context.ReadValue<Vector2>();
+            if (!gameManager.isStarting)
+            {
+                movementInput = context.ReadValue<Vector2>();
+                CheckSprint();
+            }
+            else
+            {
+                PlayersImmobility();
+            }
         }
 
         public void OnJump(InputAction.CallbackContext context)
@@ -70,8 +82,15 @@ namespace player_controller {
 
         public void OnSprint(InputAction.CallbackContext context)
         {
-            sprint = context.action.triggered;
-            CheckSprint();
+            if (!gameManager.isStarting)
+            {
+                sprint = context.action.triggered;
+                CheckSprint();
+            }
+            else
+            {
+                PlayersImmobility();
+            }
         }
         void Update()
         {
@@ -126,6 +145,7 @@ namespace player_controller {
 
         void CheckSprint()
         {
+
             if (sprint)
             {
                 this.setPlayerSpeed(8.0f);
@@ -136,9 +156,19 @@ namespace player_controller {
                 this.setPlayerSpeed(4.0f);
                 //this.setPlayerSpeed(this.CowBoy.getWalkSpeed());
             }
+
+
+        }
+        public void PlayersImmobility(){
+            jumped = false;
+            setPlayerSpeed(0);
         }
         public void ReturnToSpawn(){
-            transform.position =  new Vector3(0,0,0);
+            if (transform.parent.gameObject.name == "PlayerParent1"){
+                transform.position =  new Vector3(-15.9f,3.2f,31f);
+            } else if (transform.parent.gameObject.name == "PlayerParent2") {
+                transform.position =  new Vector3(-19.7f,2.9f,-44.7f);
+            }
             Physics.SyncTransforms();
         }
         public int getScore(){

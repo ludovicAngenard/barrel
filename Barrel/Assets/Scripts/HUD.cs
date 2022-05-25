@@ -15,6 +15,7 @@ public class HUD : MonoBehaviour
         ammoText = GetComponent<Text>();
         scoreText = GetComponent<Text>();
         trapText = GetComponent<Text>();
+        Debug.Log( "Score : " + player.getScore() + Ammo.Ammo+"/4");
     }
 
     // Update is called once per frame
