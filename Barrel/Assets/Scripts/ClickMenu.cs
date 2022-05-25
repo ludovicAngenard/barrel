@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class ClickMenu : MonoBehaviour {
-	
+
 
 	void Start () {
         Button btnSelectChar = GameObject.Find("CharaSelect").GetComponent<Button>();
@@ -20,17 +20,17 @@ public class ClickMenu : MonoBehaviour {
 
 
     void QuitApplication(){
-        
+
         UnityEditor.EditorApplication.isPlaying = false;
     }
 
 	//void TaskOnClick(){
-    //    
-	//	SceneManager.LoadScene("fpsControllerScene");
+    //
+	//	SceneManager.LoadScene("Map Barrel Town2");
 	//}
 
     void LoadSelectCharScene(){
-        
+
 		SceneManager.LoadScene("CharacterSelection");
 	}
 }

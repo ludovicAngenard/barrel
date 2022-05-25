@@ -239,6 +239,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25296092}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &42216899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1317040674659777092, guid: 036f61bfbecfabb4dae0522f025adcab,
+    type: 3}
+  m_PrefabInstance: {fileID: 119177211}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &50416379 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4906838889796845047, guid: 6798551f12d7fe449ae1f9c743015f5d,
@@ -429,13 +435,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1317040672945130181, guid: 036f61bfbecfabb4dae0522f025adcab,
         type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317040672945130181, guid: 036f61bfbecfabb4dae0522f025adcab,
+        type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1317040672945130181, guid: 036f61bfbecfabb4dae0522f025adcab,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[6].m_ActionId
-      value: 44cea980-0e9b-4d72-a936-fe4538303ffe
+      value: a9524532-6768-4754-b04e-15ae48679e95
       objectReference: {fileID: 0}
     - target: {fileID: 1317040672945130181, guid: 036f61bfbecfabb4dae0522f025adcab,
         type: 3}
@@ -445,7 +456,7 @@ PrefabInstance:
     - target: {fileID: 1317040672945130181, guid: 036f61bfbecfabb4dae0522f025adcab,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[6].m_ActionName
-      value: Player/Shoot[/XInputControllerWindows/rightTrigger]
+      value: Player/ValidMenu
       objectReference: {fileID: 0}
     - target: {fileID: 1317040672945130181, guid: 036f61bfbecfabb4dae0522f025adcab,
         type: 3}
@@ -475,7 +486,7 @@ PrefabInstance:
     - target: {fileID: 1317040672945130181, guid: 036f61bfbecfabb4dae0522f025adcab,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1317040672945130181, guid: 036f61bfbecfabb4dae0522f025adcab,
         type: 3}
@@ -657,6 +668,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6355948034338063984, guid: 036f61bfbecfabb4dae0522f025adcab,
+        type: 3}
+      propertyPath: playerObject
+      value: 
+      objectReference: {fileID: 42216899}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 036f61bfbecfabb4dae0522f025adcab, type: 3}
 --- !u!1001 &120431637

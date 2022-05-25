@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("Map Barrel Town");
+        SceneManager.LoadScene("Map Barrel Town2");
     }
 
     public void Options()

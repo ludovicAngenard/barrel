@@ -13,16 +13,16 @@ public class SelectCharacterManager : MonoBehaviour
 
         Button btnMenu = GameObject.Find("MenuButton").GetComponent<Button>();
 		btnMenu.onClick.AddListener(BackMenu);
-        
+
     }
 
     void BackMenu(){
-        
+
 		SceneManager.LoadScene("Menu2");
 	}
-    
+
     void TaskOnClick(){
-        
-		SceneManager.LoadScene("fpsControllerScene");
+
+		SceneManager.LoadScene("Map Barrel Town2");
 	}
 }
