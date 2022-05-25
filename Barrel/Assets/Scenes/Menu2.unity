@@ -5691,7 +5691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Resolutions
+  m_text: FullScreen
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7491e732b00e74cccbbd2d9a7f01789b, type: 2}
   m_sharedMaterial: {fileID: -7514756353138088781, guid: 7491e732b00e74cccbbd2d9a7f01789b,
