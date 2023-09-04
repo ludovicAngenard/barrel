@@ -11,7 +11,7 @@ Ce projet est porté Lysandre Le Bigot et deux équipes d'étudiants ont partici
 2020/2021 | 2021/2022
  ---: | :---: 
 Lysandre Le Bigot B1 dev | Lysandre Le Bigot B2 dev
-Mohamed Anrame-rame B3 dev | Ludovic Angenard B3 dev
+https://github.com/Xieoz B3 dev | Ludovic Angenard B3 dev
 Ludovic Angenard B2 dev | Mathieu Négaret B2 Spot-3D
 Matéo Decesvre B1 Spot-3D | Pierre Chauvin B3 dev
 Mathieu Négaret B1 Spot-3D | Florian Garcia B2 spot-3D
